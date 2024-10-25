@@ -1,0 +1,56 @@
+// common의 용도
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+}
+
+body {
+  transition: opacity .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body.dimmed {
+  overflow: hidden;
+  opacity: 1;
+}
+
+body.dimmed::after {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .8);
+  opacity: 1;
+  content: '';
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// 커서
+a,
+button {
+  &:hover {}
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  z-index: 999;
+  pointer-events: none;
+  // opacity: 0;
+  // visibility: hidden;
+  transform: scale(1.5, 1.5);
+  border-radius: 100%;
+  border: 10px solid #00ff37;
+  border-width: 1px;
+  transition: .4s cubic-bezier(0.5, 0, 0, 1);
+}
