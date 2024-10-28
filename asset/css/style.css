@@ -62,7 +62,7 @@ body {
   line-height: 1.38;
   font-family: "Roobert", sans-serif;
   color: #001713;
-  background: #f0ff3d;
+  background: #003d31;
 }
 
 *,
@@ -189,11 +189,17 @@ body.dimmed::after {
   height: 20px;
   z-index: 999;
   pointer-events: none;
-  -webkit-transform: scale(1.5, 1.5);
-          transform: scale(1.5, 1.5);
   border-radius: 100%;
-  border: 10px solid #00ff37;
+  border: 10px solid #f0ff3d;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: scale 0.4s cubic-bezier(0.5, 0, 0, 1), border 0.4s cubic-bezier(0.5, 0, 0, 1), -webkit-transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+  transition: scale 0.4s cubic-bezier(0.5, 0, 0, 1), border 0.4s cubic-bezier(0.5, 0, 0, 1), -webkit-transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+  transition: scale 0.4s cubic-bezier(0.5, 0, 0, 1), transform 0.4s cubic-bezier(0.5, 0, 0, 1), border 0.4s cubic-bezier(0.5, 0, 0, 1);
+  transition: scale 0.4s cubic-bezier(0.5, 0, 0, 1), transform 0.4s cubic-bezier(0.5, 0, 0, 1), border 0.4s cubic-bezier(0.5, 0, 0, 1), -webkit-transform 0.4s cubic-bezier(0.5, 0, 0, 1);
+}
+.cursor-hover {
+  scale: 1.5;
   border-width: 1px;
-  -webkit-transition: 0.4s cubic-bezier(0.5, 0, 0, 1);
-  transition: 0.4s cubic-bezier(0.5, 0, 0, 1);
 }/*# sourceMappingURL=style.css.map */

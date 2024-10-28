@@ -46,11 +46,16 @@ button {
   height: 20px;
   z-index: 999;
   pointer-events: none;
-  // opacity: 0;
-  // visibility: hidden;
-  transform: scale(1.5, 1.5);
   border-radius: 100%;
-  border: 10px solid #00ff37;
-  border-width: 1px;
-  transition: .4s cubic-bezier(0.5, 0, 0, 1);
+  border: 10px solid $color-main;
+	position: absolute;
+	transform: translate(-50%, -50%);
+  transition: 
+	scale .4s cubic-bezier(0.5, 0, 0, 1),
+	transform .4s cubic-bezier(0.5, 0, 0, 1),
+	border .4s cubic-bezier(0.5, 0, 0, 1);
+	&-hover{
+		scale : 1.5;
+		border-width: 1px;
+	}
 }
