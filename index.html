@@ -12,7 +12,9 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <!-- jquery -->
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- splite -->
+  <script src="./asset/js/splite.min.js"></script>
   <!-- script -->
   <script src="./asset/js/script.js" defer></script>
   <style>
@@ -23,43 +25,149 @@
 </head>
 
 <body>
-  <h2>
-    Créer des<br>
-    marques qui<br>
-    percutent
-  </h2>
-  <a href="#">hihi</a>
-  <a href="#">hihi</a>
-  <button type="button">버튼버튼</button>
+  <div class="wrap">
+    <header class="header">
+      <nav class="nav">
+        <h1 class="logo">
+          <a href="#">
+            <img src="./asset/images/logoFull.svg" alt="Vendredi Society" class="original">
+            <img src="./asset/images/logo.svg" alt="Vendredi Society" class="mini">
+          </a>
+        </h1>
+        <button type="button" class="btn-menu">
+          <span class="open">menu</span>
+          <span class="close">fermer</span>
+        </button>
+      </nav>
+      <div class="group-sub">
+        <div class="inner">
+          <div class="sub-area">
+            <div class="info-wrap">
+              <a class="link-mail" href="mailto:hello@vendredi-society.fr">hello@vendredi-society.fr</a>
+              <a class="link-tel" href="tel:+33(0)668707372">+33 (0)6 68 70 73 72</a>
+              <div class="social-box">
+                <a href="#"><img src="./asset/images/icons/twitter.svg" alt="twitter"></a>
+                <a href="#"><img src="./asset/images/icons/instagram.svg" alt="instagram"></a>
+                <a href="#"><img src="./asset/images/icons/linkedin.svg" alt="linkedin"></a>
+                <a href="#"><img src="./asset/images/icons/facebook.svg" alt="facebook"></a>
+              </div>
+            </div>
+            <ul class="sub-list">
+              <li class="sub-item">
+                <a href="#">
+                  <span class="original">Accueil</span>
+                  <span class="dummy" aria-hidden="true">Accueil</span>
+                </a>
+              </li>
+              <li class="sub-item">
+                <a href="#">
+                  <span class="original">Projets</span>
+                  <span class="dummy" aria-hidden="true">Projets</span>
+                </a>
+              </li>
+              <li class="sub-item">
+                <a href="#">
+                  <span class="original">Culture</span>
+                  <span class="dummy" aria-hidden="true">Culture</span>
+                </a>
+              </li>
+              <li class="sub-item">
+                <a href="#">
+                  <span class="original">Talents</span>
+                  <span class="dummy" aria-hidden="true">Talents</span>
+                </a>
+              </li>
+              <li class="sub-item">
+                <a href="#">
+                  <span class="original">F.A.Q</span>
+                  <span class="dummy" aria-hidden="true">F.A.Q</span>
+                </a>
+              </li>
+              <li class="sub-item">
+                <a href="#">
+                  <span class="original">Contact</span>
+                  <span class="dummy" aria-hidden="true">Contact</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="sc-intro">
+        <h2 class="blind">Créer des marques qui percutent</h2>
+        <div class="sticky-container">
+          <div class="stick y">
+            <div class="group-top">
+              <p class="headline">
+                Créer des<br>
+                marques<span class="space"><img src="./asset/images/fl.svg" alt="scroll down"></span>qui<br>
+                percutent
+              </p>
+            </div>
+            <div class="group-bottom bright">
+              <p class="headline">
+                <strong class="text text1">Créer des</strong><br>
+                <strong class="text text2">marques<span class="space"></span>qui</strong><br>
+                <strong class="text text3">percutent</strong>
+              </p>
+              <div class="media-area" aria-hidden="true">
+                <div class="box box1">
+                  <img src="./asset/images/hero_1.png" alt>
+                </div>
+                <div class="box box2">
+                  <video src="./asset/video/hero2.mp4" autoplay muted loop></video>
+                </div>
+                <div class="box box3">
+                  <img src="./asset/images/hero_3.jpg" alt>
+                </div>
+              </div>
+            </div>
+            <div class="group-right">
+              <p>
+                Et
+                des
+                expériences
+                digitales
+                ultra-fluides,
+                pour ceux qui
+                aiment avoir
+                un coup
+                d'avance.
+            </p>
+            </div>
+            <div class="group-garder">
+              <h3>Et le garder.</h3>
+            </div>
+          </div>
+        </div>
+          <div class="group-change">
+          <h2>
+            Dans un monde qui change chaque jour et qui n’attend pas, notre modèle vous permet d’être vif.
+          </h2>
+          <div class="showreel-area">
+            <figure>
+              <div class="thumb">
+                <video src="./asset/video/thumbnail.mp4" autoplay muted loop></video>
+              </div>
+              <figcaption>Play showreel</figcaption>
+            </figure>
+            <p class="desc">Votre équipe est composée sur mesure, pour avoir le plus d’impact. Uniquement avec des talents pointus.</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="sc-project">
+        <h2>Les derniers projets<br> toujours faits main</h2>
+        <h3 class="sousTitre">{ dans la main }</h3>
+        
+      </section>
+    </main>
+    <footer class="footer"></footer>
+  </div>
 
 
-  <p class="complexe">
-
-    Et
-    des
-    expériences
-    digitales
-    ultra-fluides,
-    pour ceux qui
-    aiment avoir
-    un coup
-    d'avance.
-
-  </p>
-
-  <h2>Et le garder.</h2>
-
-
-  <p>
-    Dans un monde qui change chaque jour et qui n’attend pas, notre modèle vous permet d’être vif.
-  </p>
-
-  <span>Play showreel</span>
-  <p>Votre équipe est composée sur mesure, pour avoir le plus d’impact. Uniquement avec des talents pointus.</p>
-
-
-  <h3>Les derniers projets<br> toujours faits main</h3>
-  <h4 class="sousTitre">{ dans la main }</h4>
 
 
 
@@ -124,17 +232,18 @@
 
 
   <h2>
-      Attendez, il y a pire.
+    Attendez, il y a pire.
   </h2>
   <span>On travaille avec vous.</span>
 
 
 
   <h2>Désolé, vous serez un peu impliqué.</h2>
-  <p>Convaincus que pour aller là où vous voulez, vous avez aussi votre mot à dire, on vous met dans la boucle dès le début. Si vous aimez donner votre avis, cela vous plaira.</p>
-  
-  
-  <h3>{   Free frees   }</h3>
+  <p>Convaincus que pour aller là où vous voulez, vous avez aussi votre mot à dire, on vous met dans la boucle dès le
+    début. Si vous aimez donner votre avis, cela vous plaira.</p>
+
+
+  <h3>{ Free frees }</h3>
   <h2>Ici on respecte les<br>Freelances</h2>
 
 
@@ -144,86 +253,104 @@
     on veut pouvoir travailler
     avec les meilleurs</p>
 
-    <h2>Et c’est tant mieux.</h2>
+  <h2>Et c’est tant mieux.</h2>
 
 
 
-    <h2>{   Zéro mise en concurrence   }</h2>
-    <h3>On choisit le bon, ça va plus vite.</h3>
+  <h2>{ Zéro mise en concurrence }</h2>
+  <h3>On choisit le bon, ça va plus vite.</h3>
 
 
-    <h2>{   Projets sains   }</h2>
-    <h3>Des plannings honnêtes que l'on tient.</h3>
+  <h2>{ Projets sains }</h2>
+  <h3>Des plannings honnêtes que l'on tient.</h3>
 
-    <h2>{   Spécialités respectées   }</h2>
-    <h3>Experts et talents pointus, et basta.</h3>
-
-
-    <ul class="card-list">
-      <li class="card-item">
-        <h2 class="name">
-          Nicolas Garcia
-        </h2>
-        <span class="company">Paack</span>
-        <p class="desc">Respectueux, accompagnant et professionnel, voilà quelques-uns des adjectifs choisis si je devais définir Vendredi Society suite à notre dernière collaboration. À l’écoute dès le début et fonctionnant main dans la main pour délivrer un projet dans les temps et surtout très cool.</p>
-      </li>
-      <li class="card-item">
-        <h2 class="name">
-          Julie Barthélemy
-        </h2>
-        <span class="company">White elephant</span>
-        <p class="desc">On sent tout de suite quand on arrive dans une équipe avec qui on va pouvoir faire de belles choses, qui auront l’impact qu’on voulait au départ. Avec Vendredi Society, c’est l’exigence, le respect des expertises de chacun et des notifs Slack qu’on est content de voir, pas l’inverse. Bref, une relation hyper saine et motivante à tous points de vue.</p>
-      </li>
-      <li class="card-item">
-        <h2 class="name">
-          François Cauderlier
-        </h2>
-        <span class="company">Cowbell Studio</span>
-        <p class="desc">J’ai eu la chance de travailler avec Vendredi Society sur deux projets de motion design et je suis très satisfait du contact suscité, j’ai tout de suite été mis à l’aise par l’équipe. Une confiance mutuelle s’est vite crée, dans une ambiance de travail à la fois professionnelle et chaleureuse, tout en respectant les plannings et obligations de chacun.</p>
-      </li>
-      <li class="card-item">
-        <h2 class="name">
-          Christophe Zidler
-        </h2>
-        <span class="company">CZ</span>
-        <p class="desc">Avec Vendredi on est sur de travailler dans un environnement sain, sans stress, et on sent qu'ils respectent profondément les freelances avec qui ils travaillent en leur faisant entièrement confiance. Pas de bullshit ou de réunions inutiles, c'est carré du brief initial au rendu final. La cerise sur le gâteau : ils sont encore là au moment de la facture. Avec eux, on peut oublier les 30 emails de relance habituels, ça fait plaisir.</p>
-      </li>
-      <li class="card-item">
-        <h2 class="name">
-          Alexandre Parageaud
-        </h2>
-        <span class="company">Apara</span>
-        <p class="desc">Avec Vendredi Society, on collabore dans un cadre qui respecte le freelance parce qu’on lui fait confiance et qu’on lui laisse la liberté de rester créatif. Au final, tout le monde est satisfait du projet puisque le travail est réalisé de la bonne façon et dans les meilleurs conditions possibles.</p>
-      </li>
-      <li class="card-item">
-        <h2 class="name">
-          Nicolas Guillard
-        </h2>
-        <span class="company">Nitrique Concept</span>
-        <p class="desc">Travailler avec Vendredi Society est un vrai plaisir, les demandes des clients sont analysées, challengées et clarifiées par l’équipe UX et nous arrivent ensuite cadrées afin de limiter les inconnues. On modifie très peu ce que l’on fait ce qui est très rare dans notre métier, l’ensemble de l’équipe s’y retrouve ainsi que le client. Le savoir-faire de chacun est pris en compte et chaque profil est associé au bon projet.</p>
-      </li>
-    </ul>
+  <h2>{ Spécialités respectées }</h2>
+  <h3>Experts et talents pointus, et basta.</h3>
 
 
+  <ul class="card-list">
+    <li class="card-item">
+      <h2 class="name">
+        Nicolas Garcia
+      </h2>
+      <span class="company">Paack</span>
+      <p class="desc">Respectueux, accompagnant et professionnel, voilà quelques-uns des adjectifs choisis si je devais
+        définir Vendredi Society suite à notre dernière collaboration. À l’écoute dès le début et fonctionnant main dans
+        la main pour délivrer un projet dans les temps et surtout très cool.</p>
+    </li>
+    <li class="card-item">
+      <h2 class="name">
+        Julie Barthélemy
+      </h2>
+      <span class="company">White elephant</span>
+      <p class="desc">On sent tout de suite quand on arrive dans une équipe avec qui on va pouvoir faire de belles
+        choses, qui auront l’impact qu’on voulait au départ. Avec Vendredi Society, c’est l’exigence, le respect des
+        expertises de chacun et des notifs Slack qu’on est content de voir, pas l’inverse. Bref, une relation hyper
+        saine et motivante à tous points de vue.</p>
+    </li>
+    <li class="card-item">
+      <h2 class="name">
+        François Cauderlier
+      </h2>
+      <span class="company">Cowbell Studio</span>
+      <p class="desc">J’ai eu la chance de travailler avec Vendredi Society sur deux projets de motion design et je suis
+        très satisfait du contact suscité, j’ai tout de suite été mis à l’aise par l’équipe. Une confiance mutuelle
+        s’est vite crée, dans une ambiance de travail à la fois professionnelle et chaleureuse, tout en respectant les
+        plannings et obligations de chacun.</p>
+    </li>
+    <li class="card-item">
+      <h2 class="name">
+        Christophe Zidler
+      </h2>
+      <span class="company">CZ</span>
+      <p class="desc">Avec Vendredi on est sur de travailler dans un environnement sain, sans stress, et on sent qu'ils
+        respectent profondément les freelances avec qui ils travaillent en leur faisant entièrement confiance. Pas de
+        bullshit ou de réunions inutiles, c'est carré du brief initial au rendu final. La cerise sur le gâteau : ils
+        sont encore là au moment de la facture. Avec eux, on peut oublier les 30 emails de relance habituels, ça fait
+        plaisir.</p>
+    </li>
+    <li class="card-item">
+      <h2 class="name">
+        Alexandre Parageaud
+      </h2>
+      <span class="company">Apara</span>
+      <p class="desc">Avec Vendredi Society, on collabore dans un cadre qui respecte le freelance parce qu’on lui fait
+        confiance et qu’on lui laisse la liberté de rester créatif. Au final, tout le monde est satisfait du projet
+        puisque le travail est réalisé de la bonne façon et dans les meilleurs conditions possibles.</p>
+    </li>
+    <li class="card-item">
+      <h2 class="name">
+        Nicolas Guillard
+      </h2>
+      <span class="company">Nitrique Concept</span>
+      <p class="desc">Travailler avec Vendredi Society est un vrai plaisir, les demandes des clients sont analysées,
+        challengées et clarifiées par l’équipe UX et nous arrivent ensuite cadrées afin de limiter les inconnues. On
+        modifie très peu ce que l’on fait ce qui est très rare dans notre métier, l’ensemble de l’équipe s’y retrouve
+        ainsi que le client. Le savoir-faire de chacun est pris en compte et chaque profil est associé au bon projet.
+      </p>
+    </li>
+  </ul>
 
-    <h2>Pour bien débuter,<br>
-      vérifions qu’on est fait<br>
-      pour s’entendre ?</h2>
 
 
-      <footer>
-        <h2>Ça se passe<br>par ici</h2>
-        <div class="group-icon" aria-hidden="true">
-          <img src="./asset/images/icons/arrow.svg" alt>
-          <img src="./asset/images/icons/circle.svg" alt>
-        </div>
-        <h3>Briefez-nous</h3>
-        <div class="group-info">
-          <a href="tel:+33(0)668707372">+33 (0)6 68 70 73 72</a>
-          <a href="mailto:hello@vendredi-society.fr">hello@vendredi-society.fr</a>
-        </div>
-        <button class="btn-top">Back to top</button>
-      </footer>
+  <h2>Pour bien débuter,<br>
+    vérifions qu’on est fait<br>
+    pour s’entendre ?</h2>
+
+
+  <footer>
+    <h2>Ça se passe<br>par ici</h2>
+    <div class="group-icon" aria-hidden="true">
+      <img src="./asset/images/icons/arrow.svg" alt>
+      <img src="./asset/images/icons/circle.svg" alt>
+    </div>
+    <h3>Briefez-nous</h3>
+    <div class="group-info">
+      <a href="tel:+33(0)668707372">+33 (0)6 68 70 73 72</a>
+      <a href="mailto:hello@vendredi-society.fr">hello@vendredi-society.fr</a>
+    </div>
+    <button class="btn-top">Back to top</button>
+  </footer>
   <div class="cursor"></div>
 
 </body>

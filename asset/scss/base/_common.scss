@@ -12,20 +12,8 @@ body {
   transition: opacity .6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-body.dimmed {
+body.hidden {
   overflow: hidden;
-  opacity: 1;
-}
-
-body.dimmed::after {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, .8);
-  opacity: 1;
-  content: '';
 }
 
 .sticky {
@@ -36,26 +24,29 @@ body.dimmed::after {
 }
 
 // 커서
-a,
-button {
-  &:hover {}
-}
-
 .cursor {
   width: 20px;
   height: 20px;
   z-index: 999;
   pointer-events: none;
   border-radius: 100%;
-  border: 10px solid $color-main;
+  border: 10px solid $color-bright;
 	position: absolute;
 	transform: translate(-50%, -50%);
   transition: 
 	scale .4s cubic-bezier(0.5, 0, 0, 1),
 	transform .4s cubic-bezier(0.5, 0, 0, 1),
 	border .4s cubic-bezier(0.5, 0, 0, 1);
+  @include res{
+    display: none;
+  }
 	&-hover{
 		scale : 1.5;
 		border-width: 1px;
 	}
+}
+
+.bright{
+  background: $color-bright;
+  color: $color-primary;
 }

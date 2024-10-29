@@ -1,1 +1,99 @@
 //main
+.sc-intro {
+  width: 100%;
+
+  .headline {
+    font-size: clamp(81rem, 10.5vw, 201rem);
+    line-height: 1.1;
+    letter-spacing: -0.008em;
+    text-align: center;
+    transition: .3s;
+    margin: 0 auto;
+    text-transform: uppercase;
+    @include res {
+      font-size: 40rem;
+    }
+  }
+
+  .group-top,
+  .group-bottom {
+    height: 100vh;
+    @include flexbox;
+    .space {
+      position: relative;
+      margin: 0 2vw;
+      z-index: 2;
+      width: 14vw;
+      max-width: 270rem;
+      border-radius: .35em;
+      height: 7vw;
+      max-height: 135rem;
+      background: $color-bright;
+      overflow: hidden;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      top: -1vw;
+      @include res {
+        width: 55rem;
+        height: 29rem;
+      }
+      img {
+        width: 30%;
+      }
+    }
+  }
+
+  .group-top {
+    color: $color-white;
+  }
+
+  .group-bottom {
+    position: relative;
+    .headline{
+      .text{
+        position: relative;
+      }
+    }
+    .media-area{
+      position: absolute;
+      top: 0;
+      .box{
+        border-radius: 20rem;
+        overflow: hidden;
+        width: 30vw;
+        &1{
+          transform: translateX(-20%) rotate(12deg);
+        }
+        &2{
+          transform: translateX(30%) rotate(-10deg);
+        }
+        &3{
+          transform: translateX(-10%) rotate(10deg);
+        }
+        @include res{
+          &1{
+            width: 90vw;
+            aspect-ratio: 16/9;
+            margin: 0 0 0 40vw;
+          }
+          &2{
+            width: 70vw;
+            aspect-ratio: 1/1;
+            margin: -5vw 0 0 -20vw;
+          }
+          &3{
+            width: 70vw;
+            aspect-ratio: 1/1;
+            margin: -4vw 0 0 40vw;
+          }
+        }
+        img,video{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

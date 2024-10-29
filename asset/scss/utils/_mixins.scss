@@ -1,11 +1,19 @@
 // 기본 스타일 모바일 크기
-@mixin res($breakpoint) {
-  @if $breakpoint == 't' {
-    @media (max-width: 833px) { @content; }
-  } @else if $breakpoint == 'd' {
-    @media (min-width: 1000px) { @content; }
-  }
+
+@mixin res{
+  @media(max-width: 767px) {@content;}
 }
+@mixin resT{
+  @media(max-width: 1024px) {@content;}
+}
+
+// @mixin res($breakpoint) {
+//   @if $breakpoint == 't' {
+//     @media (max-width: 833px) { @content; }
+//   } @else if $breakpoint == 'd' {
+//     @media (min-width: 1000px) { @content; }
+//   }
+// }
 
 @mixin ellipsis($lines: 1) {
   @if ($lines==1) {

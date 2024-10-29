@@ -6,16 +6,22 @@
 }
 
 
+html{
+	//160px X0.0625 1px
+	//1px
+	font-size: 6.25%;
+}
+
 body {
 	min-width: 320px;
 	font-style: normal;
-	font-size: clamp(13px, 1.11vw, 21px);
-	line-height: 1.38;
+	//16px
+	font-size: 16rem;
+	line-height: 1.1;
+	font-weight: 500;
 	font-family: "Roobert", sans-serif;
 	color: $color-black;
-	background: $color-primary;
-	// #f0ff3d
-	// background: #001713;
+	background: $color-dark;
 }
 
 
