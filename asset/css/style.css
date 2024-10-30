@@ -600,7 +600,6 @@ body.hidden {
 .sc-intro .group-bottom .space {
   position: relative;
   margin: 0 2vw;
-  z-index: 2;
   width: 14vw;
   max-width: 270rem;
   border-radius: 0.35em;
