@@ -2,13 +2,10 @@
 
 .header {
   width: 100%;
-
   &.convert {
     .nav{
       .logo {
         .mini {
-          opacity: 1;
-          visibility: visible;
           filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
         }
       }
@@ -85,26 +82,27 @@
         display: block;
         position: relative;
       }
-
       &.active {
         .original {
           transform: translateY(0);
         }
+        .mini{
+          opacity: 0;
+          visibility: hidden;
+        }
       }
-
       .original {
         min-width: 140rem;
         width: 15vw;
         transform: translateY(-300%);
         transition: transform .5s ease;
       }
-
       .mini {
         width: 60rem;
         height: 35rem;
         transition: filter .5s;
-        opacity: 0;
-        visibility: hidden;
+        opacity: 1;
+        visibility: visible;
         position: absolute;
         top: 0;
         transition: opacity .5s, visibility .5s;

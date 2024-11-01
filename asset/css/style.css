@@ -232,8 +232,6 @@ body.hidden {
   width: 100%;
 }
 .header.convert .nav .logo .mini {
-  opacity: 1;
-  visibility: visible;
   -webkit-filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
           filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
 }
@@ -318,6 +316,10 @@ body.hidden {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
+.header .nav .logo.active .mini {
+  opacity: 0;
+  visibility: hidden;
+}
 .header .nav .logo .original {
   min-width: 140rem;
   width: 15vw;
@@ -335,8 +337,8 @@ body.hidden {
   transition: -webkit-filter 0.5s;
   transition: filter 0.5s;
   transition: filter 0.5s, -webkit-filter 0.5s;
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   position: absolute;
   top: 0;
   -webkit-transition: opacity 0.5s, visibility 0.5s;
@@ -603,11 +605,6 @@ body.hidden {
   font-style: italic;
 }
 
-.wrap {
-  overflow: hidden;
-  min-width: 320px;
-}
-
 .sc-intro {
   width: 100%;
 }
@@ -628,16 +625,21 @@ body.hidden {
 }
 .sc-intro .group-top,
 .sc-intro .group-bottom {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 100%;
+}
+.sc-intro .group-top .headline strong,
+.sc-intro .group-bottom .headline strong {
+  display: block;
+  overflow: hidden;
+  padding: 0.2em 0;
+}
+.sc-intro .group-top .headline strong .box,
+.sc-intro .group-bottom .headline strong .box {
+  display: block;
+}
+.sc-intro .group-top .headline strong + strong,
+.sc-intro .group-bottom .headline strong + strong {
+  margin-top: -5vw;
 }
 .sc-intro .group-top .space,
 .sc-intro .group-bottom .space {
@@ -673,21 +675,36 @@ body.hidden {
   width: 30%;
 }
 .sc-intro .group-top {
-  color: #f7f7f7;
-}
-.sc-intro .group-top .headline strong {
-  display: block;
+  --height: 100vh;
+  height: var(--height);
   overflow: hidden;
-  padding: 0.2em 0;
-}
-.sc-intro .group-top .headline strong .box {
-  display: block;
-}
-.sc-intro .group-top .headline strong + strong {
-  margin-top: -5vw;
+  background: #002921;
+  color: #f7f7f7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .sc-intro .group-bottom {
+  height: 100vh;
   position: relative;
+  z-index: -1;
+  height: var(--height);
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .sc-intro .group-bottom .headline .text {
   position: relative;
@@ -730,9 +747,63 @@ body.hidden {
     margin: -4vw 0 0 40vw;
   }
 }
-.sc-intro .group-bottom .media-area .box img, .sc-intro .group-bottom .media-area .box video {
+.sc-intro .group-bottom .media-area .box img,
+.sc-intro .group-bottom .media-area .box video {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.sc-intro .group-right {
+  position: sticky;
+  padding: 183.8rem 0px 183.8rem 35vw;
+  font-size: clamp(81px, 10.5vw, 201px);
+  line-height: 1;
+  color: #f7f7f7;
+}
+.sc-intro .group-right p .char {
+  opacity: 0.1;
+}
+@media (max-width: 767px) {
+  .sc-intro .group-right {
+    padding: 106rem 20rem;
+    font-size: 45rem;
+  }
+}
+.sc-intro .group-garder {
+  width: 100%;
+  text-align: center;
+  color: #f0ff3d;
+  text-transform: uppercase;
+  font-size: clamp(37px, 4.9vw, 93px);
+  font-family: "Orbikular", serif;
+}
+.sc-intro .group-garder .sticky-container {
+  height: 400vh;
+}
+.sc-intro .group-garder .sticky-container .sticky {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sc-intro .group-garder h3 {
+  width: 100%;
+  letter-spacing: -0.1em;
+  font-weight: 200;
+}
+.sc-intro .group-garder svg {
+  position: absolute;
+  width: 53vw;
+  height: auto;
+}
+@media (max-width: 767px) {
+  .sc-intro .group-garder {
+    font-size: 37px;
+  }
 }/*# sourceMappingURL=style.css.map */

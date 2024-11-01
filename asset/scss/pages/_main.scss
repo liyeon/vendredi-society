@@ -1,11 +1,7 @@
 //main
-
-.wrap{
-  overflow: hidden;
-  min-width: 320px;
-}
 .sc-intro {
   width: 100%;
+
   .headline {
     font-size: clamp(81rem, 10.5vw, 201rem);
     line-height: 1.1;
@@ -14,15 +10,33 @@
     transition: .3s;
     margin: 0 auto;
     text-transform: uppercase;
+
     @include res {
       font-size: 40rem;
     }
+
   }
 
   .group-top,
   .group-bottom {
-    height: 100vh;
-    @include flexbox;
+    width: 100%;
+
+    .headline {
+      strong {
+        display: block;
+        overflow: hidden;
+        padding: .2em 0;
+
+        .box {
+          display: block;
+        }
+      }
+
+      strong+strong {
+        margin-top: -5vw;
+      }
+    }
+
     .space {
       position: relative;
       margin: 0 2vw;
@@ -37,79 +51,134 @@
       justify-content: center;
       align-items: center;
       top: -1vw;
+
       @include res {
         width: 55rem;
         height: 29rem;
       }
+
       img {
         width: 30%;
       }
     }
   }
 
+
   .group-top {
+    --height: 100vh;
+    height: var(--height);
+    overflow: hidden;
+    background: $color-dark;
     color: $color-white;
-    .headline{
-      strong{
-        display: block;
-        overflow: hidden;
-        padding: .2em 0;
-        .box{
-          display: block;
-        }
-      }
-      strong + strong{
-        margin-top: -5vw;
-      }
-    }
+    @include flexbox;
   }
 
   .group-bottom {
+    height: 100vh;
     position: relative;
-    .headline{
-      .text{
+    z-index: -1;
+    height: var(--height);
+    overflow: hidden;
+    @include flexbox;
+
+    .headline {
+      .text {
         position: relative;
       }
     }
-    .media-area{
+
+    .media-area {
       position: absolute;
       top: 0;
-      .box{
+
+      .box {
         border-radius: 20rem;
         overflow: hidden;
         width: 30vw;
-        &1{
+
+        &1 {
           transform: translateX(-20%) rotate(12deg);
         }
-        &2{
+
+        &2 {
           transform: translateX(30%) rotate(-10deg);
         }
-        &3{
+
+        &3 {
           transform: translateX(-10%) rotate(10deg);
         }
-        @include res{
-          &1{
+
+        @include res {
+          &1 {
             width: 90vw;
             aspect-ratio: 16/9;
             margin: 0 0 0 40vw;
           }
-          &2{
+
+          &2 {
             width: 70vw;
             aspect-ratio: 1/1;
             margin: -5vw 0 0 -20vw;
           }
-          &3{
+
+          &3 {
             width: 70vw;
             aspect-ratio: 1/1;
             margin: -4vw 0 0 40vw;
           }
         }
-        img,video{
+
+        img,
+        video {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
       }
+    }
+  }
+
+  .group-right{
+    position: sticky;
+    padding: 183.8rem 0px 183.8rem 35vw;
+    font-size: clamp(81px, 10.5vw, 201px);
+    line-height: 1;
+    color: $color-white;
+    p{
+      .char{
+        opacity: .1;
+      }
+    }
+    @include res{
+      padding: 106rem 20rem;
+      font-size: 45rem;
+    }
+  }
+  .group-garder{
+    width: 100%;
+    text-align: center;
+    color: #f0ff3d;
+    text-transform: uppercase;
+    font-size: clamp(37px, 4.9vw, 93px);
+    font-family: 'Orbikular', serif;
+    .sticky-container{
+      height: 400vh;
+      .sticky{
+        @include flexbox;
+      }
+    }
+    h3{
+      width: 100%;
+      letter-spacing: -0.1em;
+      font-weight: 200;
+    }
+    svg{
+      position: absolute;
+      width: 53vw;
+      height: auto;
+    }
+    @include res{
+      font-size: 37px;
     }
   }
 }

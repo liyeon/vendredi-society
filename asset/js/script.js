@@ -58,60 +58,110 @@ $(document).ready(function () {
     $("body").removeClass("hidden");
   });
 
-  let headerOriginal = new SplitType(".header .sub-item .original", {
-    type: "chars",
-  });
-  let headerDummy = new SplitType(".header .sub-item .dummy", {
-    type: "chars",
-  });
-
-  gsap.set('.header .nav',{autoAlpha:0})
-  gsap.set('.sc-intro .group-top .headline .box', { yPercent: 100 });
-  gsap.set('.sc-intro .group-top .space img', { yPercent: -150 });
+  gsap.set(".header .nav", { autoAlpha: 0 });
+  gsap.set(".sc-intro .group-top .headline .box", { yPercent: 100 });
+  gsap.set(".sc-intro .group-top .space img", { yPercent: -150 });
   ScrollTrigger.create({
-    trigger: '.sc-intro', 
-    start: "-1% top", 
-    end: "bottom bottom", 
+    trigger: ".sc-intro",
+    start: "-1% top",
+    end: "bottom bottom",
     // markers:true,
-    onEnter:function(){
-      gsap.to('.sc-intro .group-top .headline .box', {
+    onEnter: function () {
+      gsap.to(".sc-intro .group-top .headline .box", {
         yPercent: 0,
-        duration: 1, 
+        duration: 1,
       });
-      gsap.to('.sc-intro .group-top .space img', {
+      gsap.to(".sc-intro .group-top .space img", {
         yPercent: 0,
         ease: "power3.out",
-        delay: .4,
-        duration: 1
+        delay: 0.4,
+        duration: 1,
       });
-      gsap.to('.header .nav', {
+      gsap.to(".header .nav", {
         autoAlpha: 1,
         duration: 1,
-        delay:.4,
+        delay: 0.4,
       });
     },
   });
   ScrollTrigger.create({
-    trigger: '.sc-intro', 
-    start: "30% top", 
-    end: "bottom bottom", 
+    trigger: ".sc-intro",
+    start: "30% top",
+    end: "bottom bottom",
     // markers:true,
-    onEnter:function(){
-      $('.header .logo').removeClass('active');
+    onEnter: function () {
+      $(".header .logo").removeClass("active");
     },
-    onLeaveBack:function(){
-      $('.header .logo').addClass('active');
-    }
+    onLeaveBack: function () {
+      $(".header .logo").addClass("active");
+    },
   });
 
+  // const intro = gsap.timeline({
+  //   scrollTrigger: {
+  //       trigger: ".sc-intro .group-top",
+  //       start: "top top",
+  //       end: "bottom bottom",
+  //       scrub: 0,
+  //       markers: false,
+  //       onEnter:function(){
+  //         console.log('sdf')
+  //       }
+  //   }
+  // });
+
+  // intro
+  //   .to(".sc-intro .group-top", {'--height': 0,})
+
+  const introRight = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sc-intro .group-right",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0,
+      markers: false,
+    },
+  });
+
+  introRight.to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
+
+  gsap.to('.sc-intro .group-garder svg', { rotate: '50deg' });
+  gsap.to('.sc-intro .group-garder h3 .char', { xPercent: 100 });
+  const introGarder = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sc-intro .group-garder",
+      start: "-10% top",
+      end: "bottom bottom",
+      scrub: 1,
+      markers: false,
+    },
+  });
+  introGarder
+  .to('.sc-intro .group-garder svg',{rotate:0})
+  .to(".sc-intro .group-garder h3 .char", {
+    xPercent : 0,
+    stagger: 1,
+  },'-=0.4');
+
+
   ScrollTrigger.create({
-    trigger: '.bright', 
-    start: "top top", 
-    end: "+=400%",
-    markers:false, 
-    toggleClass:{
-      targets:".header",
-      className:"convert"
+    trigger: ".bright",
+    start: "top top",
+    end: "bottom bottom",
+    markers: false,
+    toggleClass: {
+      targets: ".header",
+      className: "convert",
     },
   });
 }); // document ready
+
+let headerOriginalTxt = new SplitType(".header .sub-item .original", {
+  type: "chars",
+});
+let headerDummyTxt = new SplitType(".header .sub-item .dummy", {
+  type: "chars",
+});
+let introRightTxt = new SplitType(".sc-intro .group-right p", {
+  type: "chars",
+});
