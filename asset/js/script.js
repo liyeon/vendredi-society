@@ -65,8 +65,53 @@ $(document).ready(function () {
     type: "chars",
   });
 
+  gsap.set('.header .nav',{autoAlpha:0})
+  gsap.set('.sc-intro .group-top .headline .box', { yPercent: 100 });
+  gsap.set('.sc-intro .group-top .space img', { yPercent: -150 });
+  ScrollTrigger.create({
+    trigger: '.sc-intro', 
+    start: "-1% top", 
+    end: "bottom bottom", 
+    // markers:true,
+    onEnter:function(){
+      gsap.to('.sc-intro .group-top .headline .box', {
+        yPercent: 0,
+        duration: 1, 
+      });
+      gsap.to('.sc-intro .group-top .space img', {
+        yPercent: 0,
+        ease: "power3.out",
+        delay: .4,
+        duration: 1
+      });
+      gsap.to('.header .nav', {
+        autoAlpha: 1,
+        duration: 1,
+        delay:.4,
+      });
+    },
+  });
+  ScrollTrigger.create({
+    trigger: '.sc-intro', 
+    start: "30% top", 
+    end: "bottom bottom", 
+    // markers:true,
+    onEnter:function(){
+      $('.header .logo').removeClass('active');
+    },
+    onLeaveBack:function(){
+      $('.header .logo').addClass('active');
+    }
+  });
 
-  $(".btn-menu").css({ opacity: 1, visibility: "visible" });
-  $(".nav .logo").css({ opacity: 1, visibility: "visible" });
-
+  ScrollTrigger.create({
+    trigger: '.bright', 
+    start: "top top", 
+    end: "+=400%",
+    markers:false, 
+    toggleClass:{
+      targets:".header",
+      className:"convert"
+    },
+  });
 }); // document ready

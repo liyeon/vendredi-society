@@ -63,7 +63,7 @@ body {
   min-width: 320px;
   font-style: normal;
   font-size: 16rem;
-  line-height: 1.1;
+  line-height: 1.288;
   font-weight: 500;
   font-family: "Roobert", sans-serif;
   color: #001713;
@@ -228,19 +228,40 @@ body.hidden {
             transform: translateY(-100%);
   }
 }
+.header {
+  width: 100%;
+}
+.header.convert .nav .logo .mini {
+  opacity: 1;
+  visibility: visible;
+  -webkit-filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
+          filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
+}
+.header.convert .nav .btn-menu {
+  color: #003d31;
+}
+.header.active .nav .logo.active .original {
+  -webkit-transform: translateY(-300%);
+          transform: translateY(-300%);
+}
 .header.active .nav .logo .original {
-  display: none;
+  -webkit-transform: translateY(-300%);
+          transform: translateY(-300%);
 }
 .header.active .nav .logo .mini {
-  display: block;
-  -webkit-transition: 1s;
-  transition: 1s;
+  opacity: 1;
+  visibility: visible;
+  -webkit-filter: none;
+          filter: none;
 }
 .header.active .nav .btn-menu .open {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 .header.active .nav .btn-menu .close {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  color: #f7f7f7;
 }
 .header.active .group-sub {
   --height: 100vh;
@@ -250,79 +271,96 @@ body.hidden {
           transform: translateY(0);
 }
 .header.active .group-sub .sub-list .sub-item:nth-child(1) {
-  -webkit-transition-delay: 1.1s;
-          transition-delay: 1.1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
 }
 .header.active .group-sub .sub-list .sub-item:nth-child(2) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+.header.active .group-sub .sub-list .sub-item:nth-child(3) {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+.header.active .group-sub .sub-list .sub-item:nth-child(4) {
+  -webkit-transition-delay: 0.8s;
+          transition-delay: 0.8s;
+}
+.header.active .group-sub .sub-list .sub-item:nth-child(5) {
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+.header.active .group-sub .sub-list .sub-item:nth-child(6) {
   -webkit-transition-delay: 1.2s;
           transition-delay: 1.2s;
 }
-.header.active .group-sub .sub-list .sub-item:nth-child(3) {
-  -webkit-transition-delay: 1.3s;
-          transition-delay: 1.3s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(4) {
-  -webkit-transition-delay: 1.4s;
-          transition-delay: 1.4s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(5) {
-  -webkit-transition-delay: 1.5s;
-          transition-delay: 1.5s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(6) {
-  -webkit-transition-delay: 1.6s;
-          transition-delay: 1.6s;
-}
 .header .nav {
-  position: fixed;
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  position: fixed;
+  width: 100%;
   padding-top: clamp(20rem, 1.4vw, 50rem);
   padding-inline: clamp(20rem, 2vw, 50rem);
   z-index: 11;
 }
-.header .nav .logo {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transition: opacity 1s, visibility 1s;
-  transition: opacity 1s, visibility 1s;
+.header .nav .logo a {
+  display: block;
+  position: relative;
+}
+.header .nav .logo.active .original {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 .header .nav .logo .original {
   min-width: 140rem;
   width: 15vw;
+  -webkit-transform: translateY(-300%);
+          transform: translateY(-300%);
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 .header .nav .logo .mini {
-  display: none;
   width: 60rem;
   height: 35rem;
-  -webkit-transition: -webkit-filter 0.2s;
-  transition: -webkit-filter 0.2s;
-  transition: filter 0.2s;
-  transition: filter 0.2s, -webkit-filter 0.2s;
-}
-.header .nav .logo .mini.convert {
-  -webkit-filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
-          filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
-}
-.header .nav .btn-menu {
+  -webkit-transition: -webkit-filter 0.5s;
+  transition: -webkit-filter 0.5s;
+  transition: filter 0.5s;
+  transition: filter 0.5s, -webkit-filter 0.5s;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: opacity 1s, visibility 1s;
-  transition: opacity 1s, visibility 1s;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+.header .nav .btn-menu {
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
   font-size: clamp(14rem, 1.25vw, 24rem);
   text-transform: uppercase;
   color: #f7f7f7;
+  position: relative;
+}
+.header .nav .btn-menu .close,
+.header .nav .btn-menu .open {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.5s, visibility 0.5s;
 }
 .header .nav .btn-menu .close {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 .header .nav .btn-menu:hover .close {
   color: #f0ff3d;
@@ -565,6 +603,11 @@ body.hidden {
   font-style: italic;
 }
 
+.wrap {
+  overflow: hidden;
+  min-width: 320px;
+}
+
 .sc-intro {
   width: 100%;
 }
@@ -631,6 +674,17 @@ body.hidden {
 }
 .sc-intro .group-top {
   color: #f7f7f7;
+}
+.sc-intro .group-top .headline strong {
+  display: block;
+  overflow: hidden;
+  padding: 0.2em 0;
+}
+.sc-intro .group-top .headline strong .box {
+  display: block;
+}
+.sc-intro .group-top .headline strong + strong {
+  margin-top: -5vw;
 }
 .sc-intro .group-bottom {
   position: relative;

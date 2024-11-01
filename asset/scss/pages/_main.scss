@@ -1,7 +1,11 @@
 //main
+
+.wrap{
+  overflow: hidden;
+  min-width: 320px;
+}
 .sc-intro {
   width: 100%;
-
   .headline {
     font-size: clamp(81rem, 10.5vw, 201rem);
     line-height: 1.1;
@@ -45,6 +49,19 @@
 
   .group-top {
     color: $color-white;
+    .headline{
+      strong{
+        display: block;
+        overflow: hidden;
+        padding: .2em 0;
+        .box{
+          display: block;
+        }
+      }
+      strong + strong{
+        margin-top: -5vw;
+      }
+    }
   }
 
   .group-bottom {
