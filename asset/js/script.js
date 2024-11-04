@@ -1,3 +1,6 @@
+gsap.defaults({
+	ease:"none"
+})
 $(document).ready(function () {
   // 커서
   let mouseCursor = document.querySelector(".cursor");
@@ -59,19 +62,19 @@ $(document).ready(function () {
   });
 
   gsap.set(".header .nav", { autoAlpha: 0 });
-  gsap.set(".sc-intro .group-top .headline .box", { yPercent: 100 });
-  gsap.set(".sc-intro .group-top .space img", { yPercent: -150 });
+  gsap.set(".sc-intro .group-intro .headline .box", { yPercent: 100 });
+  gsap.set(".sc-intro .group-intro .top-area .space img", { yPercent: -150 });
   ScrollTrigger.create({
     trigger: ".sc-intro",
     start: "-1% top",
     end: "bottom bottom",
     // markers:true,
     onEnter: function () {
-      gsap.to(".sc-intro .group-top .headline .box", {
+      gsap.to(".sc-intro .group-intro .headline .box", {
         yPercent: 0,
         duration: 1,
       });
-      gsap.to(".sc-intro .group-top .space img", {
+      gsap.to(".sc-intro .group-intro .top-area .space img", {
         yPercent: 0,
         ease: "power3.out",
         delay: 0.4,
@@ -86,7 +89,7 @@ $(document).ready(function () {
   });
 
   ScrollTrigger.create({
-    trigger: ".sc-intro .group-top",
+    trigger: ".sc-intro .group-intro .top-area",
     start: "80% top",
     end: "bottom bottom",
     // markers:true,
@@ -100,16 +103,16 @@ $(document).ready(function () {
 
   const introBottom = gsap.timeline({
     scrollTrigger: {
-      trigger: ".sc-intro .group-bottom",
+      trigger: ".sc-intro .group-intro",
       start: "top top",
       end: "bottom bottom",
       scrub: 0,
-      markers: true,
+      markers: false,
     },
   });
 introBottom
-.to('.sc-intro .group-top .sticky-container',{'--height':0})
-
+.to('.sc-intro .group-intro .top-area',{'--height':0,})
+.to('.sc-intro .group-intro .bottom-area',{'--width':0,},'-=0.2')
 
   const introRight = gsap.timeline({
     scrollTrigger: {
@@ -117,11 +120,15 @@ introBottom
       start: "top top",
       end: "bottom bottom",
       scrub: 0,
-      markers: false,
+      markers: true,
     },
+    onEnter: () => {
+      $('.header').removeClass('convert')
+    }
   });
 
-  introRight.to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
+  introRight
+  .to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
 
   gsap.to('.sc-intro .group-garder svg', { rotate: '50deg' });
   gsap.to('.sc-intro .group-garder h3 .char', { xPercent: 100 });
