@@ -16,127 +16,131 @@
     }
 
   }
-
-  .group-top,
-  .group-bottom {
-    width: 100%;
-
-    .headline {
-      strong {
-        display: block;
-        overflow: hidden;
-        padding: .2em 0;
-
-        .box {
+  .group-intro{
+    .top-area,
+    .bottom-area {
+      width: 100%;
+      .headline {
+        strong {
           display: block;
+          overflow: hidden;
+          padding: .2em 0;
+  
+          .box {
+            display: block;
+          }
+        }
+        strong+strong {
+          margin-top: -5vw;
         }
       }
-
-      strong+strong {
-        margin-top: -5vw;
-      }
-    }
-
-    .space {
-      position: relative;
-      margin: 0 2vw;
-      width: 14vw;
-      max-width: 270rem;
-      border-radius: .35em;
-      height: 7vw;
-      max-height: 135rem;
-      background: $color-bright;
-      overflow: hidden;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      top: -1vw;
-
-      @include res {
-        width: 55rem;
-        height: 29rem;
-      }
-
-      img {
-        width: 30%;
-      }
-    }
-  }
-
-
-  .group-top {
-    --height: 100vh;
-    height: var(--height);
-    overflow: hidden;
-    background: $color-dark;
-    color: $color-white;
-    @include flexbox;
-  }
-
-  .group-bottom {
-    height: 100vh;
-    position: relative;
-    z-index: -1;
-    height: var(--height);
-    overflow: hidden;
-    @include flexbox;
-
-    .headline {
-      .text {
+  
+      .space {
         position: relative;
+        margin: 0 2vw;
+        width: 14vw;
+        max-width: 270rem;
+        border-radius: .35em;
+        height: 7vw;
+        max-height: 135rem;
+        background: $color-bright;
+        overflow: hidden;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        top: -1vw;
+  
+        @include res {
+          width: 55rem;
+          height: 29rem;
+        }
+        img {
+          width: 30%;
+        }
       }
     }
-
-    .media-area {
+    .top-area {
+      overflow: hidden;
+      color: $color-white;
+      --height:100vh;
+      height: var(--height);
+      background: $color-dark;
+      .sticky{
+        @include flexbox;
+      }
+    }
+  
+    .bottom-area {
       position: absolute;
       top: 0;
-
-      .box {
-        border-radius: 20rem;
-        overflow: hidden;
-        width: 30vw;
-
-        &1 {
-          transform: translateX(-20%) rotate(12deg);
+      z-index: -1;
+      height: 400vh;
+      .sticky-container{
+        height: 400vh;
+      }
+      .sticky{
+        @include flexbox;
+      }
+      .headline {
+        .text {
+          position: relative;
         }
-
-        &2 {
-          transform: translateX(30%) rotate(-10deg);
-        }
-
-        &3 {
-          transform: translateX(-10%) rotate(10deg);
-        }
-
-        @include res {
+      }
+  
+      .media-wrap {
+        position: absolute;
+        top: 0;
+        .box {
+          border-radius: 20rem;
+          overflow: hidden;
+          width: 30vw;
+  
           &1 {
-            width: 90vw;
-            aspect-ratio: 16/9;
-            margin: 0 0 0 40vw;
+            transform: translateX(-20%) rotate(12deg);
           }
-
+  
           &2 {
-            width: 70vw;
-            aspect-ratio: 1/1;
-            margin: -5vw 0 0 -20vw;
+            transform: translateX(30%) rotate(-10deg);
           }
-
+  
           &3 {
-            width: 70vw;
-            aspect-ratio: 1/1;
-            margin: -4vw 0 0 40vw;
+            transform: translateX(-10%) rotate(10deg);
           }
-        }
-
-        img,
-        video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+  
+          @include res {
+            &1 {
+              width: 90vw;
+              aspect-ratio: 16/9;
+              margin: 0 0 0 40vw;
+            }
+  
+            &2 {
+              width: 70vw;
+              aspect-ratio: 1/1;
+              margin: -5vw 0 0 -20vw;
+            }
+  
+            &3 {
+              width: 70vw;
+              aspect-ratio: 1/1;
+              margin: -4vw 0 0 40vw;
+            }
+          }
+  
+          img,
+          video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
         }
       }
     }
   }
+  
+
+
+  
 
   .group-right{
     position: sticky;

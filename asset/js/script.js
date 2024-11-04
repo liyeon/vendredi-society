@@ -84,9 +84,10 @@ $(document).ready(function () {
       });
     },
   });
+
   ScrollTrigger.create({
-    trigger: ".sc-intro",
-    start: "30% top",
+    trigger: ".sc-intro .group-top",
+    start: "80% top",
     end: "bottom bottom",
     // markers:true,
     onEnter: function () {
@@ -97,21 +98,18 @@ $(document).ready(function () {
     },
   });
 
-  // const intro = gsap.timeline({
-  //   scrollTrigger: {
-  //       trigger: ".sc-intro .group-top",
-  //       start: "top top",
-  //       end: "bottom bottom",
-  //       scrub: 0,
-  //       markers: false,
-  //       onEnter:function(){
-  //         console.log('sdf')
-  //       }
-  //   }
-  // });
+  const introBottom = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sc-intro .group-bottom",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0,
+      markers: true,
+    },
+  });
+introBottom
+.to('.sc-intro .group-top .sticky-container',{'--height':0})
 
-  // intro
-  //   .to(".sc-intro .group-top", {'--height': 0,})
 
   const introRight = gsap.timeline({
     scrollTrigger: {
@@ -144,15 +142,14 @@ $(document).ready(function () {
   },'-=0.4');
 
 
-  ScrollTrigger.create({
-    trigger: ".bright",
+  ScrollTrigger.batch(".bright", {
     start: "top top",
     end: "bottom bottom",
-    markers: false,
     toggleClass: {
       targets: ".header",
       className: "convert",
     },
+    markers: false,
   });
 }); // document ready
 
