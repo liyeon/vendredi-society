@@ -139,7 +139,7 @@
             d'avance.
           </p>
         </div>
-        <div class="group-garder bright">
+        <div class="group-garder">
           <div class="sticky-container">
             <div class="sticky">
               <h3>
@@ -164,15 +164,18 @@
             </div>
           </div>
         </div>
-        <div class="group-change">
-          <h2>
+        <div class="group-change white">
+          <h2 class="ok">
             Dans un monde qui change chaque jour et qui n’attend pas, notre modèle vous permet d’être vif.
           </h2>
           <div class="showreel-area">
-            <figure>
+            <figure class="video-wrap">
               <div class="thumb">
                 <video src="./asset/video/thumbnail.mp4" autoplay muted loop></video>
               </div>
+              <button type="button" class="btn-play">
+                <span class="blind">play</span>
+              </button>
               <figcaption>Play showreel</figcaption>
             </figure>
             <p class="desc">Votre équipe est composée sur mesure, pour avoir le plus d’impact. Uniquement avec des
@@ -183,75 +186,134 @@
 
       <section class="sc-project">
         <h2>Les derniers projets<br> toujours faits main</h2>
-        <h3 class="sousTitre">{ dans la main }</h3>
+        <h3 class="sub-title">{ dans la main }</h3>
+        <button class="btn-wilbi">
+          <div class="txt-wrap">
+            <span>W</span>
+            <span>i</span>
+            <span>l</span>
+            <span>b</span>
+            <span>i</span>
+          </div>
+          <video muted autoplay loop playsinline>
+            <source src="./asset/video/wilbi.mp4" type="video/mp4">
+          </video>
+        </button>
+        <button class="btn-otio">
+          <div class="txt-wrap">
+            <span>O</span>
+            <span>t</span>
+            <span>i</span>
+            <span>o</span>
+          </div>
+          <video muted autoplay loop playsinline>
+            <source src="./asset/video/otlo.mp4" type="video/mp4">
+          </video>
+        </button>
+        <img src="./asset/images/ellipseHori.svg" class="hori hori1" alt>
+        <img src="./asset/images/ellipseHori.svg" class="hori hori2" alt>
+        <img src="./asset/images/ellipseHori.svg" class="hori hori3" alt>
+      </section>
+      <section class="sc-rule white">
+        <h2 class="ok">
+          Nous avons regardé le monde d’hier et changé un peu les règles du jeu.
+        </h2>
+      </section>
 
+      <section class="sc-part white ">
+        <canvas id="scrollCanvas"></canvas>
+        <button id="prevBtn">Previous</button>
+        <button id="nextBtn">Next</button>
+
+        <div class="group-right">
+          <div>
+            <!-- <img src="img/seq/seq1/001.jpg"> -->
+            <h3>Nous sommes <br>tout petits.</h3>
+            <h2>Et pourtant <br>sans limites.</h2>
+            <p>Quelques capitaines stratéges, gardiens d’une culture de la performance et véritables puristes de la
+              roadmap.
+              L’ultra-agilité, pour vous faire avancer très vite.</p>
+          </div>
+          <div>
+            <!-- <img src="img/seq/seq1/080.jpg"> -->
+            <h3>Votre équipe n'existe pas encore.</h3>
+            <h2>Elle sera rassemblée spécialement pour vous, totalement sur mesure.</h2>
+            <p>C’est tout simplement la seule façon de pouvoir vous conseiller la meilleure stratégie. Oubliez les
+              mauvaises
+              surprises : dans votre équipe, uniquement des talents au top de leur spécialité.</p>
+          </div>
+          <div>
+            <!-- <img src="img/seq/seq1/120.jpg"> -->
+            <h3>Il n'y a pas d'adresse.</h3>
+            <h2>Vous impressionner avec nos productions plutôt qu’avec nos bureaux.</h2>
+            <p>Chez Vendredi Society, chacun travaille là où il est vraiment bien. Résultat, ça roule comme sur des
+              roulettes,
+              dixit tous nos clients qui sont bien contents.</p>
+          </div>
+        </div>
       </section>
     </main>
-    <footer class="footer"></footer>
+    <footer>
+      <h2>Ça se passe<br>par ici</h2>
+      <div class="group-icon" aria-hidden="true">
+        <img src="./asset/images/icons/arrow.svg" alt>
+        <img src="./asset/images/icons/circle.svg" alt>
+      </div>
+      <h3>Briefez-nous</h3>
+      <div class="group-info">
+        <a href="tel:+33(0)668707372">+33 (0)6 68 70 73 72</a>
+        <a href="mailto:hello@vendredi-society.fr">hello@vendredi-society.fr</a>
+      </div>
+      <button class="btn-top">Back to top</button>
+    </footer>
   </div>
 
 
+  <script>
 
+    const canvas = document.getElementById('scrollCanvas');
+    const ctx = canvas.getContext('2d');
+    const images = [];
+    const totalImages = 181; // 000 ~ 180까지 총 181장
+    let currentIndex = 0;
 
+    // 이미지 로드 함수
+    function preloadImages() {
+      for (let i = 0; i < totalImages; i++) {
+        const img = new Image();
+        img.src = `./asset/images/webp/seq1/${String(i).padStart(3, '0')}.webp`;
+        images.push(img);
+      }
 
-  <button>
-    <div>
-      <span>W</span>
-      <span>i</span>
-      <span>l</span>
-      <span>b</span>
-      <span>i</span>
-    </div>
-    <video muted autoplay loop playsinline>
-      <source src="./asset/video/wilbi.mp4" type="video/mp4">
-    </video>
-  </button>
-  <button>
-    <div>
-      <span>O</span>
-      <span>t</span>
-      <span>l</span>
-      <span>o</span>
-    </div>
-    <video muted autoplay loop playsinline>
-      <source src="./asset/video/otlo.mp4" type="video/mp4">
-    </video>
-  </button>
+      // 첫 번째 이미지를 캔버스에 그리기
+      images[0].onload = () => {
+        updateImage();
+      };
+    }
 
+    // 이미지 업데이트 함수
+    function updateImage() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(images[currentIndex], 0, 0, canvas.width, canvas.height);
+    }
 
+    // GSAP ScrollTrigger 설정
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.create({
+      trigger: '.sc-part',
+      start: 'top center',
+      end: 'bottom center',
+      scrub: true, // 스크롤에 따라 애니메이션이 연동됩니다
+      onUpdate: (self) => {
+        // 스크롤 진행도에 따라 이미지 인덱스 계산
+        currentIndex = Math.floor(self.progress * (totalImages - 1));
+        updateImage();
+      }
+    });
 
-  <h2>
-    Nous avons regardé le monde d’hier et changé un peu les règles du jeu.
-  </h2>
+    preloadImages(); // 이미지 로드
+  </script>
 
-
-  <div>
-    <!-- <img src="img/seq/seq1/001.jpg"> -->
-
-    <h3>Nous sommes <br>tout petits.</h3>
-    <h2>Et pourtant <br>sans limites.</h2>
-    <p>Quelques capitaines stratéges, gardiens d’une culture de la performance et véritables puristes de la roadmap.
-      L’ultra-agilité, pour vous faire avancer très vite.</p>
-  </div>
-
-
-  <div>
-    <!-- <img src="img/seq/seq1/080.jpg"> -->
-    <h3>Votre équipe n'existe pas encore.</h3>
-    <h2>Elle sera rassemblée spécialement pour vous, totalement sur mesure.</h2>
-    <p>C’est tout simplement la seule façon de pouvoir vous conseiller la meilleure stratégie. Oubliez les mauvaises
-      surprises : dans votre équipe, uniquement des talents au top de leur spécialité.</p>
-  </div>
-
-
-
-  <div>
-    <!-- <img src="img/seq/seq1/120.jpg"> -->
-    <h3>Il n'y a pas d'adresse.</h3>
-    <h2>Vous impressionner avec nos productions plutôt qu’avec nos bureaux.</h2>
-    <p>Chez Vendredi Society, chacun travaille là où il est vraiment bien. Résultat, ça roule comme sur des roulettes,
-      dixit tous nos clients qui sont bien contents.</p>
-  </div>
 
 
   <h2>
@@ -361,19 +423,7 @@
     pour s’entendre ?</h2>
 
 
-  <footer>
-    <h2>Ça se passe<br>par ici</h2>
-    <div class="group-icon" aria-hidden="true">
-      <img src="./asset/images/icons/arrow.svg" alt>
-      <img src="./asset/images/icons/circle.svg" alt>
-    </div>
-    <h3>Briefez-nous</h3>
-    <div class="group-info">
-      <a href="tel:+33(0)668707372">+33 (0)6 68 70 73 72</a>
-      <a href="mailto:hello@vendredi-society.fr">hello@vendredi-society.fr</a>
-    </div>
-    <button class="btn-top">Back to top</button>
-  </footer>
+
   <div class="cursor"></div>
 
 </body>

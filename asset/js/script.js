@@ -120,38 +120,46 @@ introBottom
       start: "top top",
       end: "bottom bottom",
       scrub: 0,
-      markers: true,
+      //markers: true,
     },
     onEnter: () => {
       $('.header').removeClass('convert')
     }
   });
 
-  introRight
-  .to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
+  // introRight
+  // .to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
 
-  gsap.to('.sc-intro .group-garder svg', { rotate: '50deg' });
-  gsap.to('.sc-intro .group-garder h3 .char', { xPercent: 100 });
-  const introGarder = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".sc-intro .group-garder",
-      start: "-10% top",
-      end: "bottom bottom",
-      scrub: 1,
-      markers: false,
-    },
-  });
-  introGarder
-  .to('.sc-intro .group-garder svg',{rotate:0})
-  .to(".sc-intro .group-garder h3 .char", {
-    xPercent : 0,
-    stagger: 1,
-  },'-=0.4');
+  // const introGarder = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: ".sc-intro .group-garder",
+  //     start: "-10% top",
+  //     end: "bottom bottom",
+  //     scrub: 1,
+  //     markers: false,
+  //   },
+  // });
+  // introGarder
+  // .to('.sc-intro .group-garder svg',{rotate:0})
+  // .tp('.sc-intro .group-garder h3',{xPercent:0},'-=0.4')
+  // .to(".sc-intro .group-garder h3 .char", {
+  //   xPercent : 0,
+  //   stagger: 1,
+  // },);
 
 
   ScrollTrigger.batch(".bright", {
     start: "top top",
     end: "bottom bottom",
+    toggleClass: {
+      targets: ".header",
+      className: "convert",
+    },
+    markers: false,
+  });
+  ScrollTrigger.batch(".white", {
+    start: "-5% top",
+    end: "10% bottom",
     toggleClass: {
       targets: ".header",
       className: "convert",

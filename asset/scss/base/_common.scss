@@ -31,22 +31,36 @@ body.hidden {
   pointer-events: none;
   border-radius: 100%;
   border: 10px solid $color-bright;
-	position: absolute;
-	transform: translate(-50%, -50%);
-  transition: 
-	scale .4s cubic-bezier(0.5, 0, 0, 1),
-	transform .4s cubic-bezier(0.5, 0, 0, 1),
-	border .4s cubic-bezier(0.5, 0, 0, 1);
-  @include res{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition:
+    scale .4s cubic-bezier(0.5, 0, 0, 1),
+    transform .4s cubic-bezier(0.5, 0, 0, 1),
+    border .4s cubic-bezier(0.5, 0, 0, 1);
+
+  @include res {
     display: none;
   }
-	&-hover{
-		scale : 1.5;
-		border-width: 1px;
-	}
+
+  &-hover {
+    scale: 1.5;
+    border-width: 1px;
+  }
 }
 
-.bright{
+.bright {
   background: $color-bright;
   color: $color-primary;
+}
+.white {
+  background: $color-white;
+  color: $color-dark;
+}
+
+.ok {
+  font-weight: 200;
+  font-size: clamp(59rem, 7.6vw, 146rem);
+  line-height: 1.14;
+  font-family: 'Orbikular', serif;
+  color: $color-dark;
 }

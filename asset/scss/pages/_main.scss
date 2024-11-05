@@ -24,6 +24,7 @@
     .sticky-container {
       height: 600vh;
     }
+
     .top-wrap,
     .bottom-area {
       @include flexbox;
@@ -129,7 +130,7 @@
             aspect-ratio: 3/5;
             transform: translateX(30%) rotate(-10deg);
           }
-          
+
           &3 {
             aspect-ratio: 4/5;
             transform: translateX(-10%) rotate(10deg);
@@ -167,19 +168,25 @@
         }
       }
     }
-  
+
   }
+
   .group-right {
     padding: 183.8rem 0px 183.8rem 35vw;
     font-size: clamp(81px, 10.5vw, 201px);
     line-height: 1;
     color: $color-white;
     background: $color-dark;
+
     p {
       .char {
         opacity: .1;
+        @include res{
+          opacity: 1;
+        }
       }
     }
+
     @include res {
       padding: 106rem 20rem;
       font-size: 45rem;
@@ -195,8 +202,8 @@
     font-family: 'Orbikular', serif;
 
     .sticky-container {
-      height: 400vh;
 
+      // height: 400vh;
       .sticky {
         @include flexbox;
       }
@@ -206,16 +213,237 @@
       width: 100%;
       letter-spacing: -0.1em;
       font-weight: 200;
+      transform: translateX(100%);
+
+      .char {
+        rotate: 30deg;
+      }
     }
 
     svg {
       position: absolute;
       width: 53vw;
       height: auto;
+      rotate: 50deg;
     }
 
     @include res {
       font-size: 37px;
+    }
+  }
+
+  .group-change {
+    padding: 14vw 0 16vw;
+    h2 {
+      margin: 0 auto;
+      width: 80vw;
+      @include res{
+        width: 90vw;
+        font-size: 40rem;
+      }
+    }
+
+    .showreel-area {
+      display: flex;
+      gap: 7vw;
+      width: 65vw;
+      margin: 180rem auto 0;
+      justify-content: space-between;
+      align-items: center;
+      @include res{
+        flex-direction: column;
+        width: 90vw;
+        margin: 0 auto;
+      }
+      .desc {
+        width: 50%;
+        font-size: clamp(13rem, 1.11vw, 21rem);
+        text-indent: clamp(60rem, 10vw, 105rem);
+        line-height: 1.38;
+        text-transform: uppercase;
+        font-weight: 400;
+        @include res{
+          text-indent: 0;
+          font-size: 17rem;
+          width: 100%;
+        }
+      }
+
+      .video-wrap {
+        width: clamp(255rem, 50%, 440rem);
+        @include column-flexbox;
+        position: relative;
+        overflow: hidden;
+        .btn-play{
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          background-position: center 45%;
+          background-size: 63px 63px;
+          @include res{
+            background-position: center center;
+          }
+        }
+        @include res{
+          width: 100%;
+          margin: 15vw auto 10vw;
+        }
+        figcaption {
+          line-height: 1.38;
+          text-transform: uppercase;
+          font-weight: 400;
+          font-size: clamp(7rem, .9vw, 16rem);
+          padding-top: 15rem;
+          @include res{
+            display: none;
+          }
+        }
+        .thumb {
+          width: 100%;
+          aspect-ratio: 16/10;
+          cursor: pointer;
+          position: relative;
+          border-radius: 20rem;
+          overflow: hidden;
+          video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            background: rgba(0, 0, 0, .2);
+            z-index: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sc-project{
+  position: relative;
+  color: $color-white;
+  padding: 14vw 0;
+  display: flex;
+  flex-direction: column;
+  background: $color-black;
+  @include res{
+    padding: 20vw 8vw 10vw;
+    background: $color-dark;
+  }
+  h2{
+    font-size: clamp(32rem, 4.16vw, 80rem);
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -.1;
+  }
+  .sub-title{
+    margin-top: 34rem;
+    text-align: center;
+    font-weight: 200;
+    font-size: clamp(23px, 2vw, 40px);
+    font-family: 'Orbikular', serif;
+  }
+  button{
+    margin-top: 10vw;
+    position: relative;
+    &.btn-otio{
+      margin-top: 40vw;
+      margin-bottom: 20vw;
+      @include res{
+        margin-top: 10vw;
+        margin-bottom: 0;
+      }
+    }
+    video{
+      position: relative;
+      z-index: 2;
+      border-radius: 20rem;
+      width: clamp(260rem,50vw,650rem);
+      margin: 0 auto;
+      @include res{
+        width: 100%;
+      }  
+    }
+    .txt-wrap{
+      position: absolute;
+      top: 25%;
+      white-space: nowrap;
+      width: 100%;
+      @include res{
+        top: 0;
+        // bottom: 10vw;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+      }
+      span{
+        position: relative;
+        font-size: clamp(320px, 41vw, 800px);
+        font-family: "Orbikular", serif;
+        font-weight: 300;
+        z-index: 3;
+        @include res{
+          font-size: 140rem;
+        }
+        color: $color-bright;
+        &:nth-child(3),
+        &:nth-child(4){
+          z-index: 1;
+          @include res{
+            z-index: 3;
+          }
+        }
+      }
+    }
+  }
+
+  .hori{
+    pointer-events: none;
+    width: 34%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    opacity: .1;
+    z-index: -2;
+    &1{
+      left: 20rem;
+    }
+    &2{
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    &3{
+      right: 20rem;
+    }
+  }
+}
+
+.sc-rule{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  @include res{
+    padding: 34vw 0;
+    height: auto;
+  }
+  h2{
+    width: 80%;
+    margin: 0 auto;
+    font-size: clamp(40px, 4.9vw, 93px);
+    line-height: 1.03;
+    @include res{
+      width: 90vw;
     }
   }
 }
