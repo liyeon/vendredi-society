@@ -166,6 +166,13 @@ introBottom
     },
     markers: false,
   });
+  $('.sc-fait .tab-item button').click(function (e) { 
+    e.preventDefault();
+    const tabName = $(this).parent().data('tab');
+    console.log(tabName)
+    $(this).parent().addClass('active').siblings().removeClass('active');
+    $(tabName).addClass('on').siblings().removeClass('on');
+  });
 }); // document ready
 
 let headerOriginalTxt = new SplitType(".header .sub-item .original", {
@@ -177,3 +184,4 @@ let headerDummyTxt = new SplitType(".header .sub-item .dummy", {
 let introRightTxt = new SplitType(".sc-intro .group-right p", {
   type: "chars",
 });
+
