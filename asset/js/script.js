@@ -61,6 +61,11 @@ $(document).ready(function () {
     $("body").removeClass("hidden");
   });
 
+  $(".sub-item a").click(function (e) {
+    $(".header").removeClass("active");
+    $("body").removeClass("hidden");
+  });
+
   gsap.set(".header .nav", { autoAlpha: 0 });
   gsap.set(".sc-intro .group-intro .headline .box", { yPercent: 100 });
   gsap.set(".sc-intro .group-intro .top-area .space img", { yPercent: -150 });

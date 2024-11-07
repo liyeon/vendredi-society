@@ -632,8 +632,7 @@ body.hidden {
 }
 
 .footer {
-  height: 100vh;
-  padding: 44px 0;
+  padding: 44px 0 0 0;
   color: #001713;
   overflow: hidden;
 }
