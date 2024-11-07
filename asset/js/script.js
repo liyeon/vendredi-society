@@ -127,25 +127,24 @@ introBottom
     }
   });
 
-  // introRight
-  // .to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
+  introRight
+  .to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
 
-  // const introGarder = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: ".sc-intro .group-garder",
-  //     start: "-10% top",
-  //     end: "bottom bottom",
-  //     scrub: 1,
-  //     markers: false,
-  //   },
-  // });
-  // introGarder
-  // .to('.sc-intro .group-garder svg',{rotate:0})
-  // .tp('.sc-intro .group-garder h3',{xPercent:0},'-=0.4')
-  // .to(".sc-intro .group-garder h3 .char", {
-  //   xPercent : 0,
-  //   stagger: 1,
-  // },);
+  const introGarder = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sc-intro .group-garder",
+      start: "-10% top",
+      end: "bottom bottom",
+      scrub: 1,
+      markers: false,
+    },
+  });
+  introGarder
+  .to('.sc-intro .group-garder svg',{rotate:0})
+  .to(".sc-intro .group-garder h3 .char", {
+    xPercent : 0,
+    stagger: 1,
+  },);
 
 
   ScrollTrigger.batch(".bright", {
