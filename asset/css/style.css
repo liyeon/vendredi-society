@@ -769,6 +769,7 @@ body.hidden {
 
 .sc-intro {
   width: 100%;
+  position: relative;
 }
 .sc-intro .headline {
   font-size: clamp(81px, 10.5vw, 201px);
@@ -867,6 +868,11 @@ body.hidden {
   --width: 14vw;
   height: 100vh;
 }
+@media (max-width: 767px) {
+  .sc-intro .group-intro .bottom-area .headline {
+    display: none;
+  }
+}
 .sc-intro .group-intro .bottom-area .space {
   width: var(--width);
 }
@@ -938,6 +944,7 @@ body.hidden {
      object-fit: cover;
 }
 .sc-intro .group-right {
+  width: 100%;
   padding: 183.8px 0px 183.8px 35vw;
   font-size: clamp(81px, 10.5vw, 201px);
   line-height: 1;

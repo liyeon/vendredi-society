@@ -1,7 +1,7 @@
 //main
 .sc-intro {
   width: 100%;
-
+  position: relative;
   .headline {
     font-size: clamp(81px, 10.5vw, 201px);
     line-height: 1.1;
@@ -87,7 +87,11 @@
       z-index: -1;
       --width: 14vw;
       height: 100vh;
-
+      @include res{
+        .headline{
+          display: none;
+        }
+      }
       .space {
         width: var(--width);
       }
@@ -113,7 +117,6 @@
       .media-wrap {
         position: absolute;
         top: 20px;
-
         .box {
           position: relative;
           border-radius: 20px;
@@ -172,12 +175,12 @@
   }
 
   .group-right {
+    width: 100%;
     padding: 183.8px 0px 183.8px 35vw;
     font-size: clamp(81px, 10.5vw, 201px);
     line-height: 1;
     color: $color-white;
     background: $color-dark;
-
     p {
       .char {
         opacity: .1;

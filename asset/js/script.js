@@ -105,7 +105,6 @@ $(document).ready(function () {
       $(".header .logo").addClass("active");
     },
   });
-
   const introBottom = gsap.timeline({
     scrollTrigger: {
       trigger: ".sc-intro .group-intro",
@@ -118,7 +117,7 @@ $(document).ready(function () {
 introBottom
 .to('.sc-intro .group-intro .top-area',{'--height':0,})
 .to('.sc-intro .group-intro .bottom-area',{'--width':0,},'-=0.2')
-
+.to('.sc-intro .group-right',{'--left':0})
   const introRight = gsap.timeline({
     scrollTrigger: {
       trigger: ".sc-intro .group-right",
