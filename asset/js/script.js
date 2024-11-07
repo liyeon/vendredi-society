@@ -152,24 +152,66 @@ introBottom
   },);
 
 
-  ScrollTrigger.batch(".bright", {
-    start: "top top",
-    end: "bottom bottom",
-    toggleClass: {
-      targets: ".header",
-      className: "convert",
-    },
-    markers: false,
+  // ScrollTrigger.batch(".bright", {
+  //   start: "top top",
+  //   end: "bottom bottom",
+  //   toggleClass: {
+  //     targets: ".header",
+  //     className: "convert",
+  //   },
+  //   markers: false,
+  // });
+  // ScrollTrigger.batch(".white", {
+  //   start: "-5% top",
+  //   end: "10% bottom",
+  //   toggleClass: {
+  //     targets: ".header",
+  //     className: "convert",
+  //   },
+  //   markers: false,
+  // });
+
+
+  const triggers = ['.bright', '.white', '.sc-free'];
+  let activeSections = 0; // 화면에 나타난 섹션의 개수
+  
+  function updateConvertClass() {
+    if (activeSections > 0) {
+      $('.header').addClass('convert');
+    } else {
+      $('.header').removeClass('convert');
+    }
+  }
+  
+  triggers.forEach(triggerClass => {
+    ScrollTrigger.create({
+      trigger: triggerClass,
+      start: "top 10%", // 트리거 시작 위치
+      end: "bottom 110%", // 트리거 종료 위치
+      markers: true, // 디버깅을 위한 마커 표시
+      onEnter: () => {
+        activeSections += 1;
+        updateConvertClass();
+      },
+      onLeave: () => {
+        activeSections -= 1;
+        updateConvertClass();
+      },
+      onEnterBack: () => {
+        activeSections += 1;
+        updateConvertClass();
+      },
+      onLeaveBack: () => {
+        activeSections -= 1;
+        updateConvertClass();
+      },
+    });
   });
-  ScrollTrigger.batch(".white", {
-    start: "-5% top",
-    end: "10% bottom",
-    toggleClass: {
-      targets: ".header",
-      className: "convert",
-    },
-    markers: false,
-  });
+  
+  
+  
+  
+
   $('.sc-fait .tab-item button').click(function (e) { 
     e.preventDefault();
     const tabName = $(this).parent().data('tab');
