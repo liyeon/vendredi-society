@@ -670,14 +670,40 @@ body.hidden {
   font-family: "Orbikular", serif;
   font-weight: 200;
   font-size: 18.46vw;
-  letter-spacing: -0.006em;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media (max-width: 767px) {
   .footer h3 {
     font-size: 16.5vw;
     padding: 20vw 0 0;
   }
+}
+.footer h3 span {
+  --y:0;
+  -webkit-transform: translateY(var(--y));
+          transform: translateY(var(--y));
+  -webkit-transition: -webkit-transform 3s;
+  transition: -webkit-transform 3s;
+  transition: transform 3s;
+  transition: transform 3s, -webkit-transform 3s;
+}
+.footer h3 span.letter1 {
+  --y:-40%;
+}
+.footer h3 span.letter2 {
+  --y:-35%;
+}
+.footer h3 span.letter3 {
+  --y:-30%;
 }
 .footer .group-info {
   display: -webkit-box;
@@ -698,6 +724,9 @@ body.hidden {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+}
+.footer .group-info .btn-top {
+  z-index: 2;
 }
 .footer .group-info .link-mail, .footer .group-info .link-tel, .footer .group-info .btn-top {
   font-size: clamp(10px, 1.25vw, 24px);
@@ -988,8 +1017,6 @@ body.hidden {
   width: 100%;
   letter-spacing: -0.1em;
   font-weight: 200;
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
 }
 .sc-intro .group-garder h3 .char {
   rotate: 30deg;

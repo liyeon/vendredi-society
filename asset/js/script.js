@@ -24,7 +24,7 @@ $(document).ready(function () {
   window.addEventListener("mousemove", cursor);
 
   // 커서에 애니메이션 적용
-  // https://developer.mozilla.org/ko/docs/Web/API/Window/rㅋequestAnimationFrame
+  // https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame
   function animateCursor() {
     currentX += (targetX - currentX) * followSpeed;
     currentY += (targetY - currentY) * followSpeed;
@@ -151,25 +151,6 @@ introBottom
   },);
 
 
-  // ScrollTrigger.batch(".bright", {
-  //   start: "top top",
-  //   end: "bottom bottom",
-  //   toggleClass: {
-  //     targets: ".header",
-  //     className: "convert",
-  //   },
-  //   markers: false,
-  // });
-  // ScrollTrigger.batch(".white", {
-  //   start: "-5% top",
-  //   end: "10% bottom",
-  //   toggleClass: {
-  //     targets: ".header",
-  //     className: "convert",
-  //   },
-  //   markers: false,
-  // });
-
 
   const triggers = ['.bright', '.white', '.sc-free'];
   let activeSections = 0; // 화면에 나타난 섹션의 개수
@@ -187,7 +168,7 @@ introBottom
       trigger: triggerClass,
       start: "top 10%", // 트리거 시작 위치
       end: "bottom 110%", // 트리거 종료 위치
-      markers: true, // 디버깅을 위한 마커 표시
+      //markers: true, // 디버깅을 위한 마커 표시
       onEnter: () => {
         activeSections += 1;
         updateConvertClass();
@@ -208,8 +189,16 @@ introBottom
   });
   
   
-  
-  
+  const footer = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".footer",
+      start: "top 10%",
+      end: "bottom bottom",
+      scrub: 0,
+      markers: true,
+    },
+  });
+  footer.to(".footer h3 span", {"--y":0,});
 
   $('.sc-fait .tab-item button').click(function (e) { 
     e.preventDefault();
@@ -230,3 +219,7 @@ let introRightTxt = new SplitType(".sc-intro .group-right p", {
   type: "chars",
 });
 
+$('.btn-top').click(function (e) { 
+  $("html, body").animate({ scrollTop: 0 }, 400);
+  return false; // 클릭 시 기본 동작 방지
+});

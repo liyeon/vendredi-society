@@ -34,11 +34,26 @@
     font-family: "Orbikular", serif;
     font-weight: 200;
     font-size: 18.46vw;
-    letter-spacing: -0.006em;
     text-align: center;
     @include res{
       font-size: 16.5vw;
       padding: 20vw 0 0;
+    }
+    display: flex;
+    justify-content: center;align-items: center;
+    span{
+      --y:0;
+      transform: translateY(var(--y));
+      transition: transform 3s;
+      &.letter1{
+        --y:-40%;
+      }
+      &.letter2{
+        --y:-35%;
+      }
+      &.letter3{
+        --y:-30%;
+      }
     }
   }
   .group-info{
@@ -50,6 +65,9 @@
     margin: 16vw 0 0;
     padding:0;
     flex-direction: column;
+    }
+    .btn-top{
+      z-index: 2;
     }
     .link-mail,.link-tel,.btn-top{
       font-size: clamp(10px, 1.25vw, 24px);
