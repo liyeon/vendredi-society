@@ -1527,6 +1527,14 @@ body.hidden {
   letter-spacing: -0.01em;
   font-weight: 200;
 }
+.sc-free .sticky-container {
+  height: 700vh;
+}
+@media (max-width: 767px) {
+  .sc-free .sticky-container {
+    height: auto;
+  }
+}
 .sc-free .clip-area {
   position: relative;
   width: 100%;
@@ -1566,6 +1574,9 @@ body.hidden {
   text-transform: uppercase;
   text-align: left;
   right: 17vw;
+  --y:100vh;
+  -webkit-transform: translateY(var(--y));
+          transform: translateY(var(--y));
 }
 @media (max-width: 767px) {
   .sc-free .clip-area .up {
@@ -1574,6 +1585,8 @@ body.hidden {
     text-indent: 0;
     font-weight: 200;
     color: #002921;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 .sc-free .clip-area .tant {
@@ -1604,8 +1617,10 @@ body.hidden {
   }
 }
 .sc-free .clip {
-  width: 650px;
-  height: 570px;
+  --width:650px;
+  --height:570px;
+  width: var(--width);
+  height: var(--height);
   overflow: hidden;
   border-radius: 20px;
 }
@@ -1680,50 +1695,63 @@ body.hidden {
 
 .sc-company {
   background: #001713;
-  height: 100vh;
+}
+.sc-company .sticky-container {
+  height: 700vh;
+}
+@media (max-width: 767px) {
+  .sc-company .sticky-container {
+    height: auto;
+  }
+}
+.sc-company .sticky {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   white-space: nowrap;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  padding: 0 130vw 0 80vw;
 }
 @media (max-width: 767px) {
-  .sc-company {
+  .sc-company .sticky {
+    display: block;
     padding: 0;
     width: 100%;
     height: auto;
-    padding: 24vw 0 30vw;
-    overflow: hidden;
   }
 }
 .sc-company .card-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  display: flex;
   gap: 5vw;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  padding: 0 130vw 0 50vw;
 }
 @media (max-width: 767px) {
   .sc-company .card-list {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    padding: 24vw 0 30vw;
+    width: 100%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 .sc-company .card-item {
   aspect-ratio: 10/14;
   min-width: 330px;
-  height: 37.5vw;
+  min-height: 37.5vw;
   background: #003d31;
   padding: 38px;
   border-radius: 20px;

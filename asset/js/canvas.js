@@ -45,8 +45,7 @@ function setupCanvas(canvasId, imagePath, totalImages) {
 
     ctx.drawImage(img, offsetX, offsetY, newWidth, newHeight);
   }
-
-  // 외부에서 접근 가능한 함수 반환
+  // 외부 접근 반환 함수
   return {
     preloadImages,
     updateImage,
@@ -76,13 +75,4 @@ ScrollTrigger.create({
   }
 });
 
-ScrollTrigger.create({
-  trigger: '.sc-free',
-  start: 'top center',
-  end: 'bottom center',
-  scrub: true,
-  onUpdate: (self) => {
-    const index = Math.floor(self.progress * (141 - 1));
-    seq2.setCurrentIndex(index);
-  }
-});
+

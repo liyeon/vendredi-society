@@ -609,6 +609,12 @@
     letter-spacing: -0.01em;
     font-weight: 200;
   }
+  .sticky-container{
+    height: 700vh;
+    @include res{
+      height: auto;
+    }
+  }
   .sticky{
 
   }
@@ -635,12 +641,15 @@
       text-transform: uppercase;
       text-align: left;
       right: 17vw;
+      --y:100vh;
+      transform: translateY(var(--y));
       @include res{
         position: static;
         font-size: 17px;
         text-indent: 0;
         font-weight: 200;
         color: $color-dark;
+        transform: translateY(0);
       }
     }
     .tant{
@@ -670,8 +679,10 @@
     }
   }
   .clip{
-    width: 650px;
-    height: 570px;
+    --width:650px;
+    --height:570px;
+    width: var(--width);
+    height: var(--height);
     overflow: hidden;
     border-radius: 20px;
     @include res{
@@ -730,32 +741,43 @@
 
 .sc-company{
   background: $color-black;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  width: max-content;
-  padding: 0 130vw 0 80vw;
-  @include res{
-    padding: 0;
-    width: 100%;
-    height: auto;
-    padding: 24vw 0 30vw;
-    overflow: hidden;
+  .sticky-container{
+    height: 700vh;
+    @include res {
+      height: auto;
+    }
   }
+  .sticky{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; 
+    white-space: nowrap;
+    @include res{
+      display: block;
+      padding: 0;
+      width: 100%;
+      height: auto;
+    }
+  }
+  
   .card-list {
     display: flex;
+    width: max-content;
+    display: flex;
     gap: 5vw;
-    flex-wrap: wrap; 
     justify-content: flex-start; 
+    padding: 0 130vw 0 50vw;
     @include res{
       justify-content: center;
+      padding: 24vw 0 30vw;
+      width: 100%;
+      flex-wrap: wrap;
     }
 }
 .card-item {
     aspect-ratio: 10 / 14; 
     min-width: 330px; 
-    height: 37.5vw; 
+    min-height: 37.5vw; 
     background: $color-primary;
     padding: 38px;
     border-radius: 20px;

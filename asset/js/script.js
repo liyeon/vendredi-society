@@ -1,6 +1,6 @@
 gsap.defaults({
-	ease:"none"
-})
+  ease: "none",
+});
 $(document).ready(function () {
   // 커서
   let mouseCursor = document.querySelector(".cursor");
@@ -114,10 +114,10 @@ $(document).ready(function () {
       markers: false,
     },
   });
-introBottom
-.to('.sc-intro .group-intro .top-area',{'--height':0,})
-.to('.sc-intro .group-intro .bottom-area',{'--width':0,},'-=0.2')
-.to('.sc-intro .group-right',{'--left':0})
+  introBottom
+    .to(".sc-intro .group-intro .top-area", { "--height": 0 })
+    .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
+    .to(".sc-intro .group-right", { "--left": 0 });
   const introRight = gsap.timeline({
     scrollTrigger: {
       trigger: ".sc-intro .group-right",
@@ -127,12 +127,11 @@ introBottom
       //markers: true,
     },
     onEnter: () => {
-      $('.header').removeClass('convert')
-    }
+      $(".header").removeClass("convert");
+    },
   });
 
-  introRight
-  .to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
+  introRight.to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
 
   const introGarder = gsap.timeline({
     scrollTrigger: {
@@ -144,26 +143,24 @@ introBottom
     },
   });
   introGarder
-  .to('.sc-intro .group-garder svg',{rotate:0})
-  .to(".sc-intro .group-garder h3 .char", {
-    xPercent : 0,
-    stagger: 1,
-  },);
+    .to(".sc-intro .group-garder svg", { rotate: 0 })
+    .to(".sc-intro .group-garder h3 .char", {
+      xPercent: 0,
+      stagger: 1,
+    });
 
-
-
-  const triggers = ['.bright', '.white', '.sc-free'];
+  const triggers = [".bright", ".white", ".sc-free"];
   let activeSections = 0; // 화면에 나타난 섹션의 개수
-  
+
   function updateConvertClass() {
     if (activeSections > 0) {
-      $('.header').addClass('convert');
+      $(".header").addClass("convert");
     } else {
-      $('.header').removeClass('convert');
+      $(".header").removeClass("convert");
     }
   }
-  
-  triggers.forEach(triggerClass => {
+
+  triggers.forEach((triggerClass) => {
     ScrollTrigger.create({
       trigger: triggerClass,
       start: "top 10%", // 트리거 시작 위치
@@ -187,25 +184,78 @@ introBottom
       },
     });
   });
-  
-  
+
+  ScrollTrigger.matchMedia({
+    "(min-width: 767px)": function () {
+      const free = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sc-free",
+          start: "top center",
+          end: "bottom bottom",
+          scrub: 0,
+          markers: true,
+          onUpdate: (self) => {
+            const index = Math.floor(self.progress * (141 - 1));  
+            seq2.setCurrentIndex(index); 
+          },
+        },
+      });
+      gsap.set(".sc-free .tant .char",{
+        y:94,
+        rotate:-8.7636,
+        scale:"1,1.4",
+        opacity:0,
+        })
+      free
+      .to(".sc-free .clip", { "--width": "100%","--height":"100%","border-radius":0 })
+      .to(".sc-free .clip-area .up", { "--y": "-100vh",},"-=0.15")
+      .to(".sc-free .tant .char",{
+        y:0,
+        rotate:0,
+        scale:"1,1",
+        opacity:1,
+        stagger: 1,
+      })
+    },
+  });
+
+  ScrollTrigger.matchMedia({
+    "(min-width: 767px)": function () {
+      const company = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sc-company",
+          start: "top 20%",
+          end: "bottom bottom",
+          scrub: 0,
+          markers: false,
+        },
+      });
+      company.to(".sc-company .card-list", {
+        xPercent: -100,
+        x: function () {
+          return window.outerWidth;
+        },
+      });
+    },
+  });
+
   const footer = gsap.timeline({
     scrollTrigger: {
       trigger: ".footer",
       start: "top 10%",
       end: "bottom bottom",
       scrub: 0,
-      markers: true,
+      markers: false,
     },
   });
-  footer.to(".footer h3 span", {"--y":0,});
+  footer.to(".footer h3 span", { "--y": 0 });
 
-  $('.sc-fait .tab-item button').click(function (e) { 
+  $(".sc-fait .tab-item button").click(function (e) {
     e.preventDefault();
-    const tabName = $(this).parent().data('tab');
-    console.log(tabName)
-    $(this).parent().addClass('active').siblings().removeClass('active');
-    $(tabName).addClass('on').siblings().removeClass('on');
+    const tabName = $(this).parent().data("tab");
+    console.log(tabName);
+    $(this).parent().addClass("active").siblings().removeClass("active");
+    $(tabName).addClass("on").siblings().removeClass("on");
   });
 }); // document ready
 
@@ -218,8 +268,11 @@ let headerDummyTxt = new SplitType(".header .sub-item .dummy", {
 let introRightTxt = new SplitType(".sc-intro .group-right p", {
   type: "chars",
 });
+let freeChar = new SplitType(".sc-free .clip-area .tant", {
+  type: "chars",
+});
 
-$('.btn-top').click(function (e) { 
+$(".btn-top").click(function (e) {
   $("html, body").animate({ scrollTop: 0 }, 400);
   return false; // 클릭 시 기본 동작 방지
 });
