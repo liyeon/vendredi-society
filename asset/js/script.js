@@ -1,7 +1,6 @@
 gsap.defaults({
   ease: "none",
 });
-let mm = gsap.matchMedia();
 const MAX_WIDTH = 767;
 $(document).ready(function () {
   // 커서
@@ -107,51 +106,79 @@ $(document).ready(function () {
       $(".header .logo").addClass("active");
     },
   });
-  const introBottom = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".sc-intro .group-intro",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 0,
-      markers: false,
-    },
-  });
-  introBottom
-    .to(".sc-intro .group-intro .top-area", { "--height": 0 })
-    .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
-    .to(".sc-intro .group-right", { "--left": 0 });
-  const introRight = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".sc-intro .group-right",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 0,
-      //markers: true,
-    },
-    onEnter: () => {
-      $(".header").removeClass("convert");
-    },
-  });
 
-  introRight.to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
-
-  const introGarder = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".sc-intro .group-garder",
-      start: "-10% top",
-      end: "bottom bottom",
-      scrub: 1,
-      markers: false,
-    },
-  });
-  introGarder
-    .to(".sc-intro .group-garder svg", { rotate: 0 })
-    .to(".sc-intro .group-garder h3 .char", {
-      xPercent: 0,
-      stagger: 1,
-    });
+  
+  let mm = gsap.matchMedia();
 
   mm.add(`(min-width: ${MAX_WIDTH}px)`, () => {
+    const introBottom = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-intro .group-intro",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0,
+        markers: false,
+      },
+    });
+    introBottom
+      .to(".sc-intro .group-intro .top-area", { "--height": 0 })
+      .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
+      .to(".sc-intro .group-right", { "--left": 0 });
+    const introRight = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-intro .group-right",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0,
+        //markers: true,
+      },
+      onEnter: () => {
+        $(".header").removeClass("convert");
+      },
+    });
+
+    introRight.to(".sc-intro .group-right p .char", {
+      opacity: 1,
+      stagger: 0.5,
+    });
+
+    const introGarder = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-intro .group-garder",
+        start: "-10% top",
+        end: "bottom -50%",
+        scrub: 1,
+        markers: false,
+        onLeaveBack:function(){
+          $('.sc-intro .group-garder').removeClass('on')
+        }
+      },
+    });
+    introGarder
+      .to(".sc-intro .group-garder svg", { rotate: 0,
+        onComplete: function() {
+          $('.sc-intro .group-garder').addClass('on')
+        }
+      },'a')
+      .to(".sc-intro .group-garder svg", { rotate:-180,scale:4 },'b')
+      .to(".sc-intro .group-garder h3", { scale:1.5 },'b')
+      .to('.sc-intro .group-garder .char',{visibility:'hidden',stagger:0.1});
+      
+      const introChange = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".sc-intro .group-change",
+          start: "top center",
+          end: "bottom bottom",
+          scrub: 0,
+          markers: true,
+        },
+      });
+      introChange.to(".sc-intro .group-change .line", { 
+        '--wordY':'0',
+        stagger:0.1,
+        duration: 0.1, 
+        ease: "power2.out", 
+      })
     ScrollTrigger.create({
       trigger: ".sc-part",
       start: "top center",
@@ -306,6 +333,16 @@ let headerDummyTxt = new SplitType(".header .sub-item .dummy", {
 });
 let introRightTxt = new SplitType(".sc-intro .group-right p", {
   type: "chars",
+});
+let introChangeTxt = new SplitType(".sc-intro .group-change .ok", {
+  type: "line",
+});
+
+$(".sc-intro .group-right .line").each(function() {
+  $(this).css({
+    "display": "inline-block",
+    "width": "auto"
+  });
 });
 $(".btn-top").click(function (e) {
   $("html, body").animate({ scrollTop: 0 }, 400);

@@ -10,7 +10,9 @@
     transition: .3s;
     margin: 0 auto;
     text-transform: uppercase;
-
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
     @include res {
       font-size: 40px;
     }
@@ -19,29 +21,30 @@
 
   .group-intro {
     position: relative;
-    height: 600vh;
-
     .sticky-container {
       height: 600vh;
+      @include res{
+        height: 300vh;
+        .sticky{
+          height: auto;
+        }
+      }
+      
     }
-
     .top-wrap,
     .bottom-area {
       @include flexbox;
       width: 100%;
       height: 100vh;
-
       .headline {
         strong {
           display: block;
           overflow: hidden;
           padding: .2em 0;
-
           .box {
             display: block;
           }
         }
-
         strong+strong {
           margin-top: -5vw;
         }
@@ -91,6 +94,8 @@
         .headline{
           display: none;
         }
+        height: auto;
+        position: relative;
       }
       .space {
         width: var(--width);
@@ -117,6 +122,10 @@
       .media-wrap {
         position: absolute;
         top: 20px;
+        @include res{
+          position: relative;
+          padding: 26vw 0;
+        }
         .box {
           position: relative;
           border-radius: 20px;
@@ -181,6 +190,7 @@
     line-height: 1;
     color: $color-white;
     background: $color-dark;
+
     p {
       .char {
         opacity: .1;
@@ -203,36 +213,82 @@
     text-transform: uppercase;
     font-size: clamp(37px, 4.9vw, 93px);
     font-family: 'Orbikular', serif;
+    height:600vh;
+    &.on{
+      h3{
+        color:$color-dark;
+      }
+      svg{
+        opacity:1;
+        path{
+          fill:$color-bright;
+        }
+      }
+      @include res{
+        h3{
+          color: $color-bright;
+        }
+        svg{
+          path{fill:none}
+        }
+      }
+    }
+    @include res {
+      font-size: 37px;
+      padding: 10vw 0 28vw;
+      overflow: hidden;
+      height:auto;
+    }
     .sticky-container {
-
-      // height: 400vh;
+      height: 700vh;
+      @include res{
+        height:auto;
+      }
       .sticky {
         @include flexbox;
+        @include res{
+          height: auto;
+          background: #002921;
+          overflow:visible;
+        }
       }
     }
 
     h3 {
+      font-weight: 300;
+      position: relative;
+      z-index: 2;
+      color: $color-bright;
+      display: flex;
+      justify-content: center;
       width: 100%;
-      letter-spacing: -0.1em;
-      font-weight: 200;
-      .char {
-        rotate: 30deg;
+      @include res{
+        padding: 28vw 0;
+        .char{
+          rotate: 0;
+        }
       }
     }
-
     svg {
       position: absolute;
       width: 53vw;
       height: auto;
-      rotate: 50deg;
-    }
-
-    @include res {
-      font-size: 37px;
+      transform: rotate(50deg);
+      z-index: 1;
+      opacity: 0.2;
+      
+      @include res{
+        width: 110vw;
+        transform: rotate(10deg);
+        max-width: max-content;
+        opacity:1;
+        fill: none;
+      }
     }
   }
 
   .group-change {
+    position:relative;
     padding: 14vw 0 16vw;
     h2 {
       margin: 0 auto;
@@ -240,6 +296,16 @@
       @include res{
         width: 90vw;
         font-size: 40px;
+      }
+      .line{
+        clip-path: polygon(-8% 0, 110% 0, 110% 100%, -10% 100%);
+        --wordY:100%;
+        .word{
+          transform: translateY(var(--wordY));
+          @include res{
+            transform: translateY(0);
+          }
+        }
       }
     }
 
