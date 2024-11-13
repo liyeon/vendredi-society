@@ -64,15 +64,5 @@ seq1.preloadImages();
 seq2.preloadImages();
 
 
-ScrollTrigger.create({
-  trigger: '.sc-part',
-  start: 'top center',
-  end: 'bottom center',
-  scrub: true,
-  onUpdate: (self) => {
-    const index = Math.floor(self.progress * (181 - 1));
-    seq1.setCurrentIndex(index);
-  }
-});
 
 
