@@ -632,7 +632,7 @@ body.hidden {
 }
 
 .footer {
-  padding: 44px 0 0 0;
+  padding: 130px 0 0 0;
   color: #001713;
   overflow: hidden;
 }
@@ -1414,9 +1414,10 @@ body.hidden {
 .sc-vous .group-att .txt-ani .okk {
   font-family: "Orbikular", serif;
 }
-.sc-vous .group-att .txt-ani .trans1 {
+.sc-vous .group-att .txt-ani .trans1, .sc-vous .group-att .txt-ani .trans2 {
   -webkit-animation: rail 8s linear infinite;
           animation: rail 8s linear infinite;
+  position: relative;
 }
 .sc-vous .group-att .desc {
   font-size: clamp(9px, 1.1vw, 21px);
@@ -1596,6 +1597,8 @@ body.hidden {
   font-size: clamp(79px, 10.2vw, 197px);
   font-family: "Orbikular", serif;
   text-align: center;
+  width: 100%;
+  padding: 0 9vw;
 }
 @media (max-width: 767px) {
   .sc-free .clip-area .tant {
@@ -1604,15 +1607,20 @@ body.hidden {
     color: #002921;
   }
 }
-.sc-free .clip-area .tant::after {
+.sc-free .clip-area .tant .line {
+  --line:0;
+}
+.sc-free .clip-area .tant .line::after {
   content: "";
   display: block;
-  width: 100%;
+  width: var(--line);
   background: #f0ff3d;
   height: 3px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 @media (max-width: 767px) {
-  .sc-free .clip-area .tant::after {
+  .sc-free .clip-area .tant .line::after {
     background: #002921;
   }
 }

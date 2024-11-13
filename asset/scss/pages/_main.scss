@@ -523,8 +523,9 @@
       .okk{
         font-family: "Orbikular",serif;
       }
-      .trans1{
+      .trans1,.trans2{
         animation: rail 8s linear infinite;
+        position: relative;
       }
     }
     .desc{
@@ -615,9 +616,7 @@
       height: auto;
     }
   }
-  .sticky{
 
-  }
   .clip-area{
     position: relative;
     width: 100%;
@@ -659,21 +658,25 @@
       font-size: clamp(79px, 10.2vw, 197px);
       font-family: "Orbikular", serif;
       text-align: center;
+      width: 100%;
+      padding: 0 9vw;
       @include res{
         font-size: 40px;
         position: static;
         color: $color-dark;
       }
-      &::after{
-        content: '';
-        display: block;
-        width: 100%;
-        background: $color-bright;
-        height: 3px;
-        // transform-origin: 0 0;
-        // transform: scaleX(0);
-        @include res{
-          background: $color-dark;
+      .line{
+        --line:0;
+        &::after{
+          content: '';
+          display: block;
+          width: var(--line);
+          background: $color-bright;
+          height: 3px;
+          transition: width .5s;
+          @include res{
+            background: $color-dark;
+          }
         }
       }
     }

@@ -1,10 +1,10 @@
 gsap.defaults({
-  ease: "none",
+  ease: 'none',
 });
 $(document).ready(function () {
   // 커서
-  let mouseCursor = document.querySelector(".cursor");
-  let links = document.querySelectorAll("a, button");
+  let mouseCursor = document.querySelector('.cursor');
+  let links = document.querySelectorAll('a, button');
 
   // 목표
   let targetX = 0,
@@ -21,7 +21,7 @@ $(document).ready(function () {
   }
 
   // 마우스 이동 시 cursor 함수 호출
-  window.addEventListener("mousemove", cursor);
+  window.addEventListener('mousemove', cursor);
 
   // 커서에 애니메이션 적용
   // https://developer.mozilla.org/ko/docs/Web/API/Window/requestAnimationFrame
@@ -30,8 +30,8 @@ $(document).ready(function () {
     currentY += (targetY - currentY) * followSpeed;
 
     // 스크롤 위치를 포함하여 커서 위치를 설정
-    mouseCursor.style.left = currentX + "px";
-    mouseCursor.style.top = currentY + "px";
+    mouseCursor.style.left = currentX + 'px';
+    mouseCursor.style.top = currentY + 'px';
 
     // 반복
     requestAnimationFrame(animateCursor);
@@ -40,52 +40,52 @@ $(document).ready(function () {
 
   // 링크 및 버튼 호버 효과
   links.forEach((link) => {
-    link.addEventListener("mouseenter", () => {
-      mouseCursor.classList.add("cursor-hover");
+    link.addEventListener('mouseenter', () => {
+      mouseCursor.classList.add('cursor-hover');
     });
-    link.addEventListener("mouseleave", () => {
-      mouseCursor.classList.remove("cursor-hover");
+    link.addEventListener('mouseleave', () => {
+      mouseCursor.classList.remove('cursor-hover');
     });
   });
 
   // header
-  $(".btn-menu .open");
+  $('.btn-menu .open');
 
-  $(".btn-menu .open").click(function (e) {
-    $(".header").addClass("active");
-    $("body").addClass("hidden");
+  $('.btn-menu .open').click(function (e) {
+    $('.header').addClass('active');
+    $('body').addClass('hidden');
   });
 
-  $(".btn-menu .close").click(function (e) {
-    $(".header").removeClass("active");
-    $("body").removeClass("hidden");
+  $('.btn-menu .close').click(function (e) {
+    $('.header').removeClass('active');
+    $('body').removeClass('hidden');
   });
 
-  $(".sub-item a").click(function (e) {
-    $(".header").removeClass("active");
-    $("body").removeClass("hidden");
+  $('.sub-item a').click(function (e) {
+    $('.header').removeClass('active');
+    $('body').removeClass('hidden');
   });
 
-  gsap.set(".header .nav", { autoAlpha: 0 });
-  gsap.set(".sc-intro .group-intro .headline .box", { yPercent: 100 });
-  gsap.set(".sc-intro .group-intro .top-area .space img", { yPercent: -150 });
+  gsap.set('.header .nav', { autoAlpha: 0 });
+  gsap.set('.sc-intro .group-intro .headline .box', { yPercent: 100 });
+  gsap.set('.sc-intro .group-intro .top-area .space img', { yPercent: -150 });
   ScrollTrigger.create({
-    trigger: ".sc-intro",
-    start: "-1% top",
-    end: "bottom bottom",
+    trigger: '.sc-intro',
+    start: '-1% top',
+    end: 'bottom bottom',
     // markers:true,
     onEnter: function () {
-      gsap.to(".sc-intro .group-intro .headline .box", {
+      gsap.to('.sc-intro .group-intro .headline .box', {
         yPercent: 0,
         duration: 1,
       });
-      gsap.to(".sc-intro .group-intro .top-area .space img", {
+      gsap.to('.sc-intro .group-intro .top-area .space img', {
         yPercent: 0,
-        ease: "power3.out",
+        ease: 'power3.out',
         delay: 0.4,
         duration: 1,
       });
-      gsap.to(".header .nav", {
+      gsap.to('.header .nav', {
         autoAlpha: 1,
         duration: 1,
         delay: 0.4,
@@ -94,77 +94,169 @@ $(document).ready(function () {
   });
 
   ScrollTrigger.create({
-    trigger: ".sc-intro .group-intro .top-area",
-    start: "80% top",
-    end: "bottom bottom",
+    trigger: '.sc-intro .group-intro .top-area',
+    start: '80% top',
+    end: 'bottom bottom',
     // markers:true,
     onEnter: function () {
-      $(".header .logo").removeClass("active");
+      $('.header .logo').removeClass('active');
     },
     onLeaveBack: function () {
-      $(".header .logo").addClass("active");
+      $('.header .logo').addClass('active');
     },
   });
   const introBottom = gsap.timeline({
     scrollTrigger: {
-      trigger: ".sc-intro .group-intro",
-      start: "top top",
-      end: "bottom bottom",
+      trigger: '.sc-intro .group-intro',
+      start: 'top top',
+      end: 'bottom bottom',
       scrub: 0,
       markers: false,
     },
   });
   introBottom
-    .to(".sc-intro .group-intro .top-area", { "--height": 0 })
-    .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
-    .to(".sc-intro .group-right", { "--left": 0 });
+    .to('.sc-intro .group-intro .top-area', { '--height': 0 })
+    .to('.sc-intro .group-intro .bottom-area', { '--width': 0 }, '-=0.2')
+    .to('.sc-intro .group-right', { '--left': 0 });
   const introRight = gsap.timeline({
     scrollTrigger: {
-      trigger: ".sc-intro .group-right",
-      start: "top top",
-      end: "bottom bottom",
+      trigger: '.sc-intro .group-right',
+      start: 'top top',
+      end: 'bottom bottom',
       scrub: 0,
       //markers: true,
     },
     onEnter: () => {
-      $(".header").removeClass("convert");
+      $('.header').removeClass('convert');
     },
   });
 
-  introRight.to(".sc-intro .group-right p .char", { opacity: 1, stagger: 0.5 });
+  introRight.to('.sc-intro .group-right p .char', { opacity: 1, stagger: 0.5 });
 
   const introGarder = gsap.timeline({
     scrollTrigger: {
-      trigger: ".sc-intro .group-garder",
-      start: "-10% top",
-      end: "bottom bottom",
+      trigger: '.sc-intro .group-garder',
+      start: '-10% top',
+      end: 'bottom bottom',
       scrub: 1,
       markers: false,
     },
   });
   introGarder
-    .to(".sc-intro .group-garder svg", { rotate: 0 })
-    .to(".sc-intro .group-garder h3 .char", {
+    .to('.sc-intro .group-garder svg', { rotate: 0 })
+    .to('.sc-intro .group-garder h3 .char', {
       xPercent: 0,
       stagger: 1,
     });
 
-  const triggers = [".bright", ".white", ".sc-free"];
+    ScrollTrigger.create({
+      trigger: '.sc-vous',
+      start: 'top 20%',
+      end: 'bottom bottom',
+      // markers:true,
+      onEnter: function () {
+        gsap.to('.trans1, .trans2',{'top':'-110%'})
+      },
+      onLeaveBack: function () {
+        gsap.to('.trans1, .trans2',{'top':0})
+      },
+    });
+
+  gsap.set('.sc-free .tant .char',{
+    y:94,
+    rotate:-8.7636,
+    scale:'1,1.4',
+    opacity:0,
+    })
+  ScrollTrigger.matchMedia({
+    '(min-width: 767px)': function () {
+      const free = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.sc-free',
+          start: 'top -40%',
+          end: 'bottom bottom',
+          scrub: 0,
+          markers: true,
+          onUpdate: (self) => {
+            const index = Math.floor(self.progress * (141 - 1));  
+            seq2.setCurrentIndex(index); 
+          },
+        },
+      });
+
+      free
+      .to('.sc-free .clip', { '--width': '100%','--height':'100%','border-radius':0, duration:3 })
+      .to('.sc-free .clip-area .up', { '--y': '-80vh',duration: 2},'-=0.1')
+      .to('.sc-free .tant .char',{
+        y:0,
+        rotate:0,
+        scale:'1,1',
+        opacity:1,
+        stagger: 1,
+      })
+      .to('.sc-free .tant .line',{
+        '--line':'100%',
+        duration:15
+      },'<')
+    },
+  });
+
+  ScrollTrigger.matchMedia({
+    '(min-width: 767px)': function () {
+      const company = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.sc-company',
+          start: 'top 20%',
+          end: 'bottom bottom',
+          scrub: 0,
+          markers: false,
+        },
+      });
+      company.to('.sc-company .card-list', {
+        xPercent: -100,
+        x: function () {
+          return window.outerWidth;
+        },
+      });
+    },
+  });
+
+  const footer = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.footer',
+      start: 'top 30%',
+      end: 'bottom bottom',
+      scrub: 0,
+      markers: false,
+    },
+  });
+  footer.to('.footer h3 span', { '--y': 0 });
+
+  $('.sc-fait .tab-item button').click(function (e) {
+    e.preventDefault();
+    const tabName = $(this).parent().data('tab');
+    console.log(tabName);
+    $(this).parent().addClass('active').siblings().removeClass('active');
+    $(tabName).addClass('on').siblings().removeClass('on');
+  });
+
+  
+  const triggers = ['.bright', '.white', '.sc-free'];
   let activeSections = 0; // 화면에 나타난 섹션의 개수
 
   function updateConvertClass() {
     if (activeSections > 0) {
-      $(".header").addClass("convert");
+      $('.header').addClass('convert');
     } else {
-      $(".header").removeClass("convert");
+      $('.header').removeClass('convert');
     }
   }
 
   triggers.forEach((triggerClass) => {
     ScrollTrigger.create({
       trigger: triggerClass,
-      start: "top 10%", // 트리거 시작 위치
-      end: "bottom 110%", // 트리거 종료 위치
+      start: 'top 10%', // 트리거 시작 위치
+      end: 'bottom 110%', // 트리거 종료 위치
       //markers: true, // 디버깅을 위한 마커 표시
       onEnter: () => {
         activeSections += 1;
@@ -184,95 +276,22 @@ $(document).ready(function () {
       },
     });
   });
-
-  ScrollTrigger.matchMedia({
-    "(min-width: 767px)": function () {
-      const free = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".sc-free",
-          start: "top center",
-          end: "bottom bottom",
-          scrub: 0,
-          markers: true,
-          onUpdate: (self) => {
-            const index = Math.floor(self.progress * (141 - 1));  
-            seq2.setCurrentIndex(index); 
-          },
-        },
-      });
-      gsap.set(".sc-free .tant .char",{
-        y:94,
-        rotate:-8.7636,
-        scale:"1,1.4",
-        opacity:0,
-        })
-      free
-      .to(".sc-free .clip", { "--width": "100%","--height":"100%","border-radius":0 })
-      .to(".sc-free .clip-area .up", { "--y": "-100vh",},"-=0.15")
-      .to(".sc-free .tant .char",{
-        y:0,
-        rotate:0,
-        scale:"1,1",
-        opacity:1,
-        stagger: 1,
-      })
-    },
-  });
-
-  ScrollTrigger.matchMedia({
-    "(min-width: 767px)": function () {
-      const company = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".sc-company",
-          start: "top 20%",
-          end: "bottom bottom",
-          scrub: 0,
-          markers: false,
-        },
-      });
-      company.to(".sc-company .card-list", {
-        xPercent: -100,
-        x: function () {
-          return window.outerWidth;
-        },
-      });
-    },
-  });
-
-  const footer = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".footer",
-      start: "top 10%",
-      end: "bottom bottom",
-      scrub: 0,
-      markers: false,
-    },
-  });
-  footer.to(".footer h3 span", { "--y": 0 });
-
-  $(".sc-fait .tab-item button").click(function (e) {
-    e.preventDefault();
-    const tabName = $(this).parent().data("tab");
-    console.log(tabName);
-    $(this).parent().addClass("active").siblings().removeClass("active");
-    $(tabName).addClass("on").siblings().removeClass("on");
-  });
 }); // document ready
 
-let headerOriginalTxt = new SplitType(".header .sub-item .original", {
-  type: "chars",
+let headerOriginalTxt = new SplitType('.header .sub-item .original', {
+  type: 'chars',
 });
-let headerDummyTxt = new SplitType(".header .sub-item .dummy", {
-  type: "chars",
+let headerDummyTxt = new SplitType('.header .sub-item .dummy', {
+  type: 'chars',
 });
-let introRightTxt = new SplitType(".sc-intro .group-right p", {
-  type: "chars",
+let introRightTxt = new SplitType('.sc-intro .group-right p', {
+  type: 'chars',
 });
-let freeChar = new SplitType(".sc-free .clip-area .tant", {
-  type: "chars",
+let freeChar = new SplitType('.sc-free .clip-area .tant', {
+  type: 'chars',
 });
 
-$(".btn-top").click(function (e) {
-  $("html, body").animate({ scrollTop: 0 }, 400);
+$('.btn-top').click(function (e) {
+  $('html, body').animate({ scrollTop: 0 }, 400);
   return false; // 클릭 시 기본 동작 방지
 });
