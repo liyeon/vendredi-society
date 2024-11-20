@@ -17,8 +17,8 @@ $(document).ready(function () {
 
   // 커서의 left값과 top값을 커서의 XY 좌표값과 일치시킴
   function cursor(e) {
-    targetX = e.pageX;
-    targetY = e.pageY;
+    targetX = e.clientX;
+    targetY = e.clientY;
   }
 
   // 마우스 이동 시 cursor 함수 호출
@@ -123,23 +123,36 @@ $(document).ready(function () {
     introBottom
       .to(".sc-intro .group-intro .top-area", { "--height": 0 })
       .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
-      .to(".sc-intro .group-right", { "--left": 0 });
+      // .to(".sc-intro .group-right", { x: 0 })
+      // .to(".sc-intro .group-right", { "--left": 0 });
     const introRight = gsap.timeline({
       scrollTrigger: {
         trigger: ".sc-intro .group-right",
         start: "top top",
-        end: "bottom bottom",
+        end: "+=100%",
         scrub: 0,
         //markers: true,
-      },
-      onEnter: () => {
-        $(".header").removeClass("convert");
+				pin:true,
       },
     });
 
-    introRight.to(".sc-intro .group-right p .char", {
+    introRight
+		.to(".sc-intro .group-right", {x:0})
+
+    const introRight2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-intro .group-intro",
+        start: `100%+=${window.innerHeight} 0%`,
+        endTrigger: ".group-garder",
+        end: "top bottom",
+        scrub: 0,
+      },
+    });
+
+    introRight2
+		.to(".sc-intro .group-right p .char", {
       opacity: 1,
-      stagger: 0.5,
+      stagger: 1,
     });
 
     const introGarder = gsap.timeline({
@@ -154,13 +167,24 @@ $(document).ready(function () {
         }
       },
     });
+		$('.sc-intro .group-garder .char').each(function(i,el){
+			gsap.set(this,{x:1655*(i+1),rotate:25*(i+1)});
+		})
+
     introGarder
-      .to(".sc-intro .group-garder svg", { rotate: 0,
-        onComplete: function() {
-          $('.sc-intro .group-garder').addClass('on')
-        }
-      },'a')
-      .to(".sc-intro .group-garder svg", { rotate:-180,scale:4 },'b')
+		.to(".sc-intro .group-garder svg", { rotate: 0,
+
+		},'a')
+      .to(".sc-intro .group-garder .char", { rotate: 0,x:0,stagger:0.001,
+				onComplete: function() {
+					$('.sc-intro .group-garder').addClass('on')
+				},
+			},'a')
+      .to(".sc-intro .group-garder svg", { rotate:-180,scale:4,
+				onReverseComplete: function() {
+					$('.sc-intro .group-garder').removeClass('on')
+				},
+			 },'b')
       .to(".sc-intro .group-garder h3", { scale:1.5 },'b')
       .to('.sc-intro .group-garder .char',{visibility:'hidden',stagger:0.1});
       
@@ -185,15 +209,35 @@ $(document).ready(function () {
       end: "bottom center",
       onUpdate: (self) => {
         const index = Math.floor(self.progress * (181 - 1));
+
         seq1.setCurrentIndex(index);
-        $(".part-wrap").removeClass("on");
-        if (index < 60) {
-          $(".part-wrap1").addClass("on");
-        } else if (index >= 60 && index < 120) {
-          $(".part-wrap2").addClass("on");
-        } else if (index >= 120) {
-          $(".part-wrap3").addClass("on");
-        }
+				// self.progress*3
+				//
+        // $(".part-wrap").removeClass("on");
+        // if (index < 60) {
+        //   $(".part-wrap1").addClass("on");
+        // } else if (index >= 60 && index < 120) {
+				// 	$(".part-wrap2").addClass("on");
+        // } else if (index >= 120) {
+				// 	$(".part-wrap3").addClass("on");
+        // }
+
+				// 초기화
+$(".part-wrap").removeClass("on");
+
+// index 값에 따라 처리
+const sections = [
+  { min: 0, max: 60, class: ".part-wrap1" },
+  { min: 60, max: 120, class: ".part-wrap2" },
+  { min: 120, max: Infinity, class: ".part-wrap3" }
+];
+
+// 반복문으로 클래스 추가
+sections.forEach(section => {
+  if (index >= section.min && index < section.max) {
+    $(section.class).addClass("on");
+  }
+});
       },
     });
 
@@ -243,6 +287,10 @@ $(document).ready(function () {
         scale: "1,1",
         opacity: 1,
         stagger: 1,
+				// stagger: {
+				// 	each:1,
+				// 	amount:1,
+				// },
       })
       .to(
         ".sc-free .tant",
@@ -288,41 +336,6 @@ $(document).ready(function () {
     $(tabName).addClass("on").siblings().removeClass("on");
   });
 
-  const triggers = [".bright", ".white", ".sc-free"];
-  let activeSections = 0; // 화면에 나타난 섹션의 개수
-
-  function updateConvertClass() {
-    if (activeSections > 0) {
-      $(".header").addClass("convert");
-    } else {
-      $(".header").removeClass("convert");
-    }
-  }
-
-  triggers.forEach((triggerClass) => {
-    ScrollTrigger.create({
-      trigger: triggerClass,
-      start: "top 10%", // 트리거 시작 위치
-      end: "bottom 110%", // 트리거 종료 위치
-      //markers: true, // 디버깅을 위한 마커 표시
-      onEnter: () => {
-        activeSections += 1;
-        updateConvertClass();
-      },
-      onLeave: () => {
-        activeSections -= 1;
-        updateConvertClass();
-      },
-      onEnterBack: () => {
-        activeSections += 1;
-        updateConvertClass();
-      },
-      onLeaveBack: () => {
-        activeSections -= 1;
-        updateConvertClass();
-      },
-    });
-  });
 }); // document ready
 
 let headerOriginalTxt = new SplitType(".header .sub-item .original", {

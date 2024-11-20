@@ -184,7 +184,7 @@ body.hidden {
   pointer-events: none;
   border-radius: 100%;
   border: 10px solid #f0ff3d;
-  position: absolute;
+  position: fixed;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   -webkit-transition: scale 0.4s cubic-bezier(0.5, 0, 0, 1), border 0.4s cubic-bezier(0.5, 0, 0, 1), -webkit-transform 0.4s cubic-bezier(0.5, 0, 0, 1);
@@ -825,9 +825,10 @@ body.hidden {
 }
 .sc-intro .group-intro {
   position: relative;
+  height: 500vh;
 }
 .sc-intro .group-intro .sticky-container {
-  height: 600vh;
+  height: 700vh;
 }
 @media (max-width: 767px) {
   .sc-intro .group-intro .sticky-container {
@@ -998,12 +999,16 @@ body.hidden {
      object-fit: cover;
 }
 .sc-intro .group-right {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
   width: 100%;
   padding: 183.8px 0px 183.8px 35vw;
   font-size: clamp(81px, 10.5vw, 201px);
   line-height: 1;
   color: #f7f7f7;
   background: #002921;
+  position: relative;
+  z-index: 10;
 }
 .sc-intro .group-right p .char {
   opacity: 0.1;
@@ -1540,8 +1545,8 @@ body.hidden {
             transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
 }
 
@@ -1551,8 +1556,8 @@ body.hidden {
             transform: translateX(0);
   }
   100% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
 }
 .sc-vous .group-att {
@@ -1601,9 +1606,15 @@ body.hidden {
   }
 }
 .sc-vous .group-att .txt-ani .trans1, .sc-vous .group-att .txt-ani .trans2 {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   -webkit-animation: rail 8s linear infinite;
           animation: rail 8s linear infinite;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 @media (max-width: 767px) {
   .sc-vous .group-att .txt-ani .trans1, .sc-vous .group-att .txt-ani .trans2 {
@@ -1958,12 +1969,10 @@ body.hidden {
 }
 .sc-company .card-item {
   aspect-ratio: 10/14;
-  min-width: 330px;
-  min-height: 37.5vw;
+  height: 36vw;
   background: #003d31;
   padding: 38px;
   border-radius: 20px;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2077,6 +2086,16 @@ body.hidden {
   .sc-fait .tab-area .tab-list {
     width: 100%;
   }
+}
+.sc-fait .tab-area .tab-item {
+  -webkit-perspective: 900px;
+          perspective: 900px;
+}
+.sc-fait .tab-area .tab-item button {
+  -webkit-transform: rotateX(70deg);
+          transform: rotateX(70deg);
+  -webkit-transform-origin: 0 90%;
+          transform-origin: 0 90%;
 }
 .sc-fait .tab-area .tab-item:hover button, .sc-fait .tab-area .tab-item.active button {
   background: #f0ff3d;

@@ -21,8 +21,10 @@
 
   .group-intro {
     position: relative;
+		height: 500vh;
+		// border: 5px solid #f00;
     .sticky-container {
-      height: 600vh;
+      height: 700vh;
       @include res{
         height: 300vh;
         .sticky{
@@ -184,13 +186,16 @@
   }
 
   .group-right {
+		transform: translateX(100%);
     width: 100%;
     padding: 183.8px 0px 183.8px 35vw;
     font-size: clamp(81px, 10.5vw, 201px);
     line-height: 1;
     color: $color-white;
     background: $color-dark;
-
+		// border: 5px solid sandybrown;
+		position: relative;
+		z-index: 10;
     p {
       .char {
         opacity: .1;
@@ -619,7 +624,7 @@
   }
 
   100% {
-    transform: translateX(-100%)
+    transform: translateX(-50%)
   }
 }
 .sc-vous{
@@ -655,8 +660,10 @@
         }
       }
       .trans1,.trans2{
+				width: max-content;
         animation: rail 8s linear infinite;
         position: relative;
+				display: flex;
         @include res{
           display: none;
         }
@@ -921,12 +928,12 @@
 }
 .card-item {
     aspect-ratio: 10 / 14; 
-    min-width: 330px; 
-    min-height: 37.5vw; 
+		height: 36vw;
+    // min-width: 330px; 
+    // min-height: 37.5vw; 
     background: $color-primary;
     padding: 38px;
     border-radius: 20px;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1014,6 +1021,11 @@
       }
     }
     .tab-item{
+			perspective: 900px;
+			button{
+				transform: rotateX(70deg);
+				transform-origin: 0 90%;
+			}
       &:hover,&.active{
         button{
           background:$color-bright;
