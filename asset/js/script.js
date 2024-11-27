@@ -132,24 +132,24 @@ $(document).ready(function () {
       },
     });
 
-    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:500});
+    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:400});
     gsap.set('.sc-intro .group-intro .media-wrap .box2',{rotate:20});
     gsap.set('.sc-intro .group-intro .media-wrap .box3',{rotate:-20});
     introBottom
-      .to(".sc-intro .group-intro .top-area", { "--height": 0 },)
-      .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
-      .to('.sc-intro .group-intro .media-wrap .box1',{
+      .to(".sc-intro .group-intro .top-area",1, { "--height": 0 },'a')
+      .to(".sc-intro .group-intro .bottom-area",1, { "--width": 0 }, "a+=0.5")
+      .to('.sc-intro .group-intro .media-wrap .box1',1.2,{
         xPercent:30,
-        yPercent:-500,
-        rotate:30},'a')
-      .to('.sc-intro .group-intro .media-wrap .box2',{
+        yPercent:-300,
+        rotate:30},'a+=0.2')
+      .to('.sc-intro .group-intro .media-wrap .box2',1.2,{
         xPercent:20,
-        yPercent:-500,
-        rotate:-30},'a')
-      .to('.sc-intro .group-intro .media-wrap .box3',{
+        yPercent:-300,
+        rotate:-30},'a+=0.2')
+      .to('.sc-intro .group-intro .media-wrap .box3',1.2,{
         xPercent:-90,
-        yPercent:-500,
-        rotate:20},'a')
+        yPercent:-300,
+        rotate:20},'a+=0.2')
         
     const introRight = gsap.timeline({
       scrollTrigger: {
