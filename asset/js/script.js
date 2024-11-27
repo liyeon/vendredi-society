@@ -1,6 +1,17 @@
 gsap.defaults({
   ease: "none",
 });
+const lenis = new Lenis()
+
+lenis.on('scroll', (e) => {
+  console.log(e)
+})
+
+lenis.on('scroll', ScrollTrigger.update)
+
+gsap.ticker.add((time)=>{
+  lenis.raf(time * 1000)
+})
 const MAX_WIDTH = 767;
 $(document).ready(function () {
   // 커서
@@ -120,11 +131,26 @@ $(document).ready(function () {
         markers: false,
       },
     });
+
+    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:500});
+    gsap.set('.sc-intro .group-intro .media-wrap .box2',{rotate:20});
+    gsap.set('.sc-intro .group-intro .media-wrap .box3',{rotate:-20});
     introBottom
-      .to(".sc-intro .group-intro .top-area", { "--height": 0 })
+      .to(".sc-intro .group-intro .top-area", { "--height": 0 },)
       .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
-      // .to(".sc-intro .group-right", { x: 0 })
-      // .to(".sc-intro .group-right", { "--left": 0 });
+      .to('.sc-intro .group-intro .media-wrap .box1',{
+        xPercent:30,
+        yPercent:-500,
+        rotate:30},'a')
+      .to('.sc-intro .group-intro .media-wrap .box2',{
+        xPercent:20,
+        yPercent:-500,
+        rotate:-30},'a')
+      .to('.sc-intro .group-intro .media-wrap .box3',{
+        xPercent:-90,
+        yPercent:-500,
+        rotate:20},'a')
+        
     const introRight = gsap.timeline({
       scrollTrigger: {
         trigger: ".sc-intro .group-right",
@@ -133,6 +159,7 @@ $(document).ready(function () {
         scrub: 0,
         //markers: true,
 				pin:true,
+				invalidateOnRefresh:true,
       },
     });
 
@@ -194,7 +221,7 @@ $(document).ready(function () {
           start: "top center",
           end: "bottom bottom",
           scrub: 0,
-          markers: true,
+          markers: false,
         },
       });
       introChange.to(".sc-intro .group-change .line", { 

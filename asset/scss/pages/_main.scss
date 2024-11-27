@@ -23,6 +23,9 @@
     position: relative;
 		height: 500vh;
 		// border: 5px solid #f00;
+    @include res{
+      height: auto;
+    }
     .sticky-container {
       height: 700vh;
       @include res{
@@ -129,25 +132,22 @@
           padding: 26vw 0;
         }
         .box {
-          position: relative;
+          position: absolute;
           border-radius: 20px;
           overflow: hidden;
           width: 25vw;
           z-index: 2;
-
-          &1 {
-            transform: translateY(50%) translateX(0) rotate(12deg);
-
+          &1{
+            margin: 0 0 0 -10vw;
           }
-
           &2 {
-            aspect-ratio: 3/5;
-            transform: translateX(30%) rotate(-10deg);
+            aspect-ratio: 4/5;
+            margin:20vw 0 0 -30vw;
           }
 
           &3 {
-            aspect-ratio: 4/5;
-            transform: translateX(-10%) rotate(10deg);
+            aspect-ratio: 4.5/5;
+            margin: 40vw 0 0 10vw;
           }
 
           @include res {
@@ -186,7 +186,7 @@
   }
 
   .group-right {
-		transform: translateX(100%);
+		transform: translateX(300%);
     width: 100%;
     padding: 183.8px 0px 183.8px 35vw;
     font-size: clamp(81px, 10.5vw, 201px);
@@ -206,6 +206,7 @@
     }
 
     @include res {
+      transform: translateX(0);
       padding: 106px 20px;
       font-size: 45px;
     }
@@ -863,7 +864,7 @@
       border-top: 1px solid rgba(0,61,49,.3);
       padding: 20vw 20px;
     }
-    h2{
+    h3{
       margin: 80px 1.4vw 0 0;
       width: 23vw;
       text-transform: uppercase;
@@ -875,7 +876,7 @@
         margin: 0;
       }
     }
-    h3{
+    p{
       width: 56vw;
       font-size: clamp(59px, 7.6vw, 146px);
       line-height: 1.14;
