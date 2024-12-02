@@ -1,17 +1,17 @@
 gsap.defaults({
   ease: "none",
 });
-const lenis = new Lenis()
+const lenis = new Lenis();
 
-lenis.on('scroll', (e) => {
-  console.log(e)
-})
+lenis.on("scroll", (e) => {
+  console.log(e);
+});
 
-lenis.on('scroll', ScrollTrigger.update)
+lenis.on("scroll", ScrollTrigger.update);
 
-gsap.ticker.add((time)=>{
-  lenis.raf(time * 1000)
-})
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
 const MAX_WIDTH = 767;
 $(document).ready(function () {
   // 커서
@@ -118,7 +118,6 @@ $(document).ready(function () {
     },
   });
 
-  
   let mm = gsap.matchMedia();
 
   mm.add(`(min-width: ${MAX_WIDTH}px)`, () => {
@@ -132,25 +131,40 @@ $(document).ready(function () {
       },
     });
 
-    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:500});
-    gsap.set('.sc-intro .group-intro .media-wrap .box2',{rotate:20});
-    gsap.set('.sc-intro .group-intro .media-wrap .box3',{rotate:-20});
+    gsap.set(".sc-intro .group-intro .media-wrap .box", { yPercent: 500 });
+    gsap.set(".sc-intro .group-intro .media-wrap .box2", { rotate: 20 });
+    gsap.set(".sc-intro .group-intro .media-wrap .box3", { rotate: -20 });
     introBottom
-      .to(".sc-intro .group-intro .top-area", { "--height": 0 },)
+      .to(".sc-intro .group-intro .top-area", { "--height": 0 })
       .to(".sc-intro .group-intro .bottom-area", { "--width": 0 }, "-=0.2")
-      .to('.sc-intro .group-intro .media-wrap .box1',{
-        xPercent:30,
-        yPercent:-500,
-        rotate:30},'a')
-      .to('.sc-intro .group-intro .media-wrap .box2',{
-        xPercent:20,
-        yPercent:-500,
-        rotate:-30},'a')
-      .to('.sc-intro .group-intro .media-wrap .box3',{
-        xPercent:-90,
-        yPercent:-500,
-        rotate:20},'a')
-        
+      .to(
+        ".sc-intro .group-intro .media-wrap .box1",
+        {
+          xPercent: 30,
+          yPercent: -500,
+          rotate: 30,
+        },
+        "a"
+      )
+      .to(
+        ".sc-intro .group-intro .media-wrap .box2",
+        {
+          xPercent: 20,
+          yPercent: -500,
+          rotate: -30,
+        },
+        "a"
+      )
+      .to(
+        ".sc-intro .group-intro .media-wrap .box3",
+        {
+          xPercent: -90,
+          yPercent: -500,
+          rotate: 20,
+        },
+        "a"
+      );
+
     const introRight = gsap.timeline({
       scrollTrigger: {
         trigger: ".sc-intro .group-right",
@@ -158,13 +172,12 @@ $(document).ready(function () {
         end: "+=100%",
         scrub: 0,
         //markers: true,
-				pin:true,
-				invalidateOnRefresh:true,
+        pin: true,
+        invalidateOnRefresh: true,
       },
     });
 
-    introRight
-		.to(".sc-intro .group-right", {x:0})
+    introRight.to(".sc-intro .group-right", { x: 0 });
 
     const introRight2 = gsap.timeline({
       scrollTrigger: {
@@ -176,8 +189,7 @@ $(document).ready(function () {
       },
     });
 
-    introRight2
-		.to(".sc-intro .group-right p .char", {
+    introRight2.to(".sc-intro .group-right p .char", {
       opacity: 1,
       stagger: 1,
     });
@@ -189,47 +201,61 @@ $(document).ready(function () {
         end: "bottom -50%",
         scrub: 1,
         markers: false,
-        onLeaveBack:function(){
-          $('.sc-intro .group-garder').removeClass('on')
-        }
+        onLeaveBack: function () {
+          $(".sc-intro .group-garder").removeClass("on");
+        },
       },
     });
-		$('.sc-intro .group-garder .char').each(function(i,el){
-			gsap.set(this,{x:1655*(i+1),rotate:25*(i+1)});
-		})
+    $(".sc-intro .group-garder .char").each(function (i, el) {
+      gsap.set(this, { x: 1655 * (i + 1), rotate: 25 * (i + 1) });
+    });
 
     introGarder
-		.to(".sc-intro .group-garder svg", { rotate: 0,
-
-		},'a')
-      .to(".sc-intro .group-garder .char", { rotate: 0,x:0,stagger:0.001,
-				onComplete: function() {
-					$('.sc-intro .group-garder').addClass('on')
-				},
-			},'a')
-      .to(".sc-intro .group-garder svg", { rotate:-180,scale:4,
-				onReverseComplete: function() {
-					$('.sc-intro .group-garder').removeClass('on')
-				},
-			 },'b')
-      .to(".sc-intro .group-garder h3", { scale:1.5 },'b')
-      .to('.sc-intro .group-garder .char',{visibility:'hidden',stagger:0.1});
-      
-      const introChange = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".sc-intro .group-change",
-          start: "top center",
-          end: "bottom bottom",
-          scrub: 0,
-          markers: false,
+      .to(".sc-intro .group-garder svg", { rotate: 0 }, "a")
+      .to(
+        ".sc-intro .group-garder .char",
+        {
+          rotate: 0,
+          x: 0,
+          stagger: 0.001,
+          onComplete: function () {
+            $(".sc-intro .group-garder").addClass("on");
+          },
         },
+        "a"
+      )
+      .to(
+        ".sc-intro .group-garder svg",
+        {
+          rotate: -180,
+          scale: 4,
+          onReverseComplete: function () {
+            $(".sc-intro .group-garder").removeClass("on");
+          },
+        },
+        "b"
+      )
+      .to(".sc-intro .group-garder h3", { scale: 1.5 }, "b")
+      .to(".sc-intro .group-garder .char", {
+        visibility: "hidden",
+        stagger: 0.1,
       });
-      introChange.to(".sc-intro .group-change .line", { 
-        '--wordY':'0',
-        stagger:0.1,
-        duration: 0.1, 
-        ease: "power2.out", 
-      })
+
+    const introChange = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-intro .group-change",
+        start: "top center",
+        end: "bottom bottom",
+        scrub: 0,
+        markers: false,
+      },
+    });
+    introChange.to(".sc-intro .group-change .line", {
+      "--wordY": "0",
+      stagger: 0.1,
+      duration: 0.1,
+      ease: "power2.out",
+    });
     ScrollTrigger.create({
       trigger: ".sc-part",
       start: "top center",
@@ -238,33 +264,33 @@ $(document).ready(function () {
         const index = Math.floor(self.progress * (181 - 1));
 
         seq1.setCurrentIndex(index);
-				// self.progress*3
-				//
+        // self.progress*3
+        //
         // $(".part-wrap").removeClass("on");
         // if (index < 60) {
         //   $(".part-wrap1").addClass("on");
         // } else if (index >= 60 && index < 120) {
-				// 	$(".part-wrap2").addClass("on");
+        // 	$(".part-wrap2").addClass("on");
         // } else if (index >= 120) {
-				// 	$(".part-wrap3").addClass("on");
+        // 	$(".part-wrap3").addClass("on");
         // }
 
-				// 초기화
-$(".part-wrap").removeClass("on");
+        // 초기화
+        $(".part-wrap").removeClass("on");
 
-// index 값에 따라 처리
-const sections = [
-  { min: 0, max: 60, class: ".part-wrap1" },
-  { min: 60, max: 120, class: ".part-wrap2" },
-  { min: 120, max: Infinity, class: ".part-wrap3" }
-];
+        // index 값에 따라 처리
+        const sections = [
+          { min: 0, max: 60, class: ".part-wrap1" },
+          { min: 60, max: 120, class: ".part-wrap2" },
+          { min: 120, max: Infinity, class: ".part-wrap3" },
+        ];
 
-// 반복문으로 클래스 추가
-sections.forEach(section => {
-  if (index >= section.min && index < section.max) {
-    $(section.class).addClass("on");
-  }
-});
+        // 반복문으로 클래스 추가
+        sections.forEach((section) => {
+          if (index >= section.min && index < section.max) {
+            $(section.class).addClass("on");
+          }
+        });
       },
     });
 
@@ -314,10 +340,10 @@ sections.forEach(section => {
         scale: "1,1",
         opacity: 1,
         stagger: 1,
-				// stagger: {
-				// 	each:1,
-				// 	amount:1,
-				// },
+        // stagger: {
+        // 	each:1,
+        // 	amount:1,
+        // },
       })
       .to(
         ".sc-free .tant",
@@ -362,7 +388,6 @@ sections.forEach(section => {
     $(this).parent().addClass("active").siblings().removeClass("active");
     $(tabName).addClass("on").siblings().removeClass("on");
   });
-
 }); // document ready
 
 let headerOriginalTxt = new SplitType(".header .sub-item .original", {
@@ -378,10 +403,10 @@ let introChangeTxt = new SplitType(".sc-intro .group-change .ok", {
   type: "line",
 });
 
-$(".sc-intro .group-right .line").each(function() {
+$(".sc-intro .group-right .line").each(function () {
   $(this).css({
-    "display": "inline-block",
-    "width": "auto"
+    display: "inline-block",
+    width: "auto",
   });
 });
 $(".btn-top").click(function (e) {

@@ -66,3 +66,49 @@ seq2.preloadImages();
 
 
 
+
+// const canvas = document.querySelector('#canvas');
+// const ctx = canvas.getContext('2d');
+
+// canvas.width = 1004;
+// canvas.height = 1214;
+
+// const frameCount = 45;
+
+// const currentFrame = (idx) => {
+//   return `https://www.apple.com/105/media/us/airpods-max/2020/996b980b-3131-44f1-af6c-fe72f9b3bfb5/anim/turn/large/large_${idx.toString().padStart(4, '0')}.jpg`;
+// }; // 리턴 필수
+
+// const images = [];
+// const card = {
+//   frame: 0,
+// };
+
+// for (let i = 0; i < frameCount; i++) {
+//   const img = new Image();
+//   img.src = currentFrame(i + 1);
+//   images.push(img);
+// }
+
+// gsap.to(card, {
+//   frame: frameCount - 1,
+//   snap: 'frame',
+//   ease: 'none',
+//   scrollTrigger: {
+//     trigger: '.canvas-area',
+//     scrub: 1,
+//     start: 'top top',
+//     end: 'bottom center',
+//     // pin: true,
+//     // markers: true
+//   },
+//   onUpdate: render,
+//   // duration: 4,
+// });
+
+// images[0].onload = render;
+
+// function render() {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   ctx.drawImage(images[card.frame], 0, 0);
+// }
