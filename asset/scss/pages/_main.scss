@@ -99,7 +99,7 @@
         .headline{
           display: none;
         }
-        height: auto;
+        height: 100vh;
         position: relative;
       }
       .space {
@@ -184,7 +184,6 @@
     }
 
   }
-
   .group-right {
 		transform: translateX(300%);
     width: 100%;
@@ -220,6 +219,7 @@
     font-size: clamp(37px, 4.9vw, 93px);
     font-family: 'Orbikular', serif;
     height:600vh;
+    margin-top: 100vh;
     &.on{
       h3{
         color:$color-dark;
@@ -244,6 +244,7 @@
       padding: 10vw 0 28vw;
       overflow: hidden;
       height:auto;
+      margin-top: 0;
     }
     .sticky-container {
       height: 700vh;

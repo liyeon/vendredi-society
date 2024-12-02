@@ -920,7 +920,7 @@ body.hidden {
 }
 @media (max-width: 767px) {
   .sc-intro .group-intro .bottom-area {
-    height: auto;
+    height: 100vh;
     position: relative;
   }
   .sc-intro .group-intro .bottom-area .headline {
@@ -1036,6 +1036,7 @@ body.hidden {
   font-size: clamp(37px, 4.9vw, 93px);
   font-family: "Orbikular", serif;
   height: 600vh;
+  margin-top: 100vh;
 }
 .sc-intro .group-garder.on h3 {
   color: #002921;
@@ -1060,6 +1061,7 @@ body.hidden {
     padding: 10vw 0 28vw;
     overflow: hidden;
     height: auto;
+    margin-top: 0;
   }
 }
 .sc-intro .group-garder .sticky-container {

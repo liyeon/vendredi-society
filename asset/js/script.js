@@ -136,7 +136,7 @@ $(document).ready(function () {
     gsap.set('.sc-intro .group-intro .media-wrap .box3',{rotate:-20});
     introBottom
       .to(".sc-intro .group-intro .top-area",1, { "--height": 0 },'a')
-      .to(".sc-intro .group-intro .bottom-area",1, { "--width": 0 }, "a+=0.5")
+      .to(".sc-intro .group-intro .bottom-area",1, { "--width": 0 }, "a+=0.4")
       .to('.sc-intro .group-intro .media-wrap .box1',1.2,{
         xPercent:30,
         yPercent:-300,
@@ -144,11 +144,11 @@ $(document).ready(function () {
       .to('.sc-intro .group-intro .media-wrap .box2',1.2,{
         xPercent:20,
         yPercent:-300,
-        rotate:-30},'a+=0.2')
+        rotate:-30},'a+=0.3')
       .to('.sc-intro .group-intro .media-wrap .box3',1.2,{
         xPercent:-90,
         yPercent:-300,
-        rotate:20},'a+=0.2')
+        rotate:20},'a+=0.3')
         
     const introRight = gsap.timeline({
       scrollTrigger: {
@@ -158,6 +158,7 @@ $(document).ready(function () {
         scrub: 0,
         //markers: true,
         pin: true,
+        pinSpacing:false,
         invalidateOnRefresh: true,
       },
     });
