@@ -257,7 +257,7 @@
       .sub-item {
         transition: transform 1s ease;
         transform: translateY(30px);
-        height: clamp(70px, 6.9444444444vw, 133.3333333333px);
+        height: clamp(75px, 6.9444444444vw, 133.3333333333px);
         overflow: hidden;
 
         @include res {
