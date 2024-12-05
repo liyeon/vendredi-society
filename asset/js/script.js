@@ -12,7 +12,6 @@ lenis.on("scroll", ScrollTrigger.update);
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000);
 });
-const MAX_WIDTH = 767;
 $(document).ready(function () {
   // 커서
   let mouseCursor = document.querySelector(".cursor");
@@ -68,7 +67,7 @@ $(document).ready(function () {
     $(".header .group-sub").addClass("active");
     $("body").addClass("hidden");
   });
-  
+
   $(".btn-menu .close").click(function (e) {
     $(".header .group-sub").removeClass("active");
     $(".header").removeClass("active");
@@ -109,20 +108,87 @@ $(document).ready(function () {
 
   ScrollTrigger.create({
     trigger: ".sc-intro .group-intro .top-area",
-    start: "80% top",
+    start: "bottom top",
     end: "bottom bottom",
-    // markers:true,
+    markers: false,
     onEnter: function () {
       $(".header .nav").removeClass("active");
+      $(".header .nav").addClass("convert");
     },
     onLeaveBack: function () {
       $(".header .nav").addClass("active");
+      $(".header .nav").removeClass("convert");
     },
   });
 
   let mm = gsap.matchMedia();
+  mm.add(`(max-width: 766px)`, () => {
+    ScrollTrigger.create({
+      trigger: ".sc-intro .group-change",
+      start: "top top",
+      end: "bottom bottom",
+      markers: false,
+      onEnter: function () {
+        $(".header .nav").addClass("convert");
+      },
+      onLeaveBack: function () {
+        $(".header .nav").removeClass("convert");
+      },
+    });
+    ScrollTrigger.create({
+      trigger: ".sc-intro .group-right",
+      start: "top top",
+      end: "bottom bottom",
+      markers: false,
+      onEnter: function () {
+        $(".header .nav").removeClass("convert");
+      },
+      onLeaveBack: function () {
+        $(".header .nav").addClass("convert");
+      },
+    });
+  });
+    
+  const project = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".sc-project",
+      start: "top top",
+      end: "bottom",
+      scrub: 0,
+      onEnter: function () {
+        $(".header .nav").removeClass("convert");
+      },
+      onLeaveBack: function () {
+        $(".header .nav").addClass("convert");
+      },
+    },
+  });
 
-  mm.add(`(min-width: ${MAX_WIDTH}px)`, () => {
+    ScrollTrigger.create({
+      trigger: ".sc-type",
+      start: "top top",
+      end: "bottom bottom",
+      markers: false,
+      onEnter: function () {
+        $(".header .nav").addClass("convert");
+      },
+      onLeaveBack: function () {
+        $(".header .nav").removeClass("convert");
+      },
+    });
+    ScrollTrigger.create({
+      trigger: ".sc-company",
+      start: "top top",
+      end: "bottom bottom",
+      markers: false,
+      onEnter: function () {
+        $(".header .nav").removeClass("convert");
+      },
+      onLeaveBack: function () {
+        $(".header .nav").addClass("convert");
+      },
+    });
+  mm.add(`(min-width: 767px)`, () => {
     const introBottom = gsap.timeline({
       scrollTrigger: {
         trigger: ".sc-intro .group-intro",
@@ -133,25 +199,43 @@ $(document).ready(function () {
       },
     });
 
-    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:500});
-    gsap.set('.sc-intro .group-intro .media-wrap .box2',{rotate:20});
-    gsap.set('.sc-intro .group-intro .media-wrap .box3',{rotate:-20});
+    gsap.set(".sc-intro .group-intro .media-wrap .box", { yPercent: 500 });
+    gsap.set(".sc-intro .group-intro .media-wrap .box2", { rotate: 20 });
+    gsap.set(".sc-intro .group-intro .media-wrap .box3", { rotate: -20 });
     introBottom
-      .to(".sc-intro .group-intro .top-area",1, { "--height": 0 },'a')
-      .to(".sc-intro .group-intro .bottom-area",1, { "--width": 0 }, "a+=0.4")
-      .to('.sc-intro .group-intro .media-wrap .box1',1.2,{
-        xPercent:30,
-        yPercent:-400,
-        rotate:30},'a+=0.2')
-      .to('.sc-intro .group-intro .media-wrap .box2',1.2,{
-        xPercent:20,
-        yPercent:-300,
-        rotate:-30},'a+=0.3')
-      .to('.sc-intro .group-intro .media-wrap .box3',1.2,{
-        xPercent:-90,
-        yPercent:-300,
-        rotate:20},'a+=0.3')
-        
+      .to(".sc-intro .group-intro .top-area", 1, { "--height": 0 }, "a")
+      .to(".sc-intro .group-intro .bottom-area", 1, { "--width": 0 }, "a+=0.5")
+      .to(
+        ".sc-intro .group-intro .media-wrap .box1",
+        1.2,
+        {
+          xPercent: 30,
+          yPercent: -400,
+          rotate: 30,
+        },
+        "a+=0.2"
+      )
+      .to(
+        ".sc-intro .group-intro .media-wrap .box2",
+        1.2,
+        {
+          xPercent: 20,
+          yPercent: -300,
+          rotate: -30,
+        },
+        "a+=0.3"
+      )
+      .to(
+        ".sc-intro .group-intro .media-wrap .box3",
+        1.2,
+        {
+          xPercent: -90,
+          yPercent: -300,
+          rotate: 20,
+        },
+        "a+=0.3"
+      );
+
     const introRight = gsap.timeline({
       scrollTrigger: {
         trigger: ".sc-intro .group-right",
@@ -160,12 +244,20 @@ $(document).ready(function () {
         scrub: 0,
         //markers: true,
         pin: true,
-        pinSpacing:false,
+        pinSpacing: false,
         invalidateOnRefresh: true,
+        onEnter: function () {
+          $(".header .nav").removeClass("convert");
+        },
+        onLeaveBack: function () {
+          $(".header .nav").addClass("convert");
+        },
       },
     });
 
-    introRight.to(".sc-intro .group-right", { x: 0 });
+    introRight.to(".sc-intro .group-right", {
+      x: 0,
+    });
 
     const introRight2 = gsap.timeline({
       scrollTrigger: {
@@ -219,6 +311,10 @@ $(document).ready(function () {
           scale: 4,
           onReverseComplete: function () {
             $(".sc-intro .group-garder").removeClass("on");
+            $(".header .nav").removeClass("convert");
+          },
+          onComplete: function () {
+            $(".header .nav").addClass("convert");
           },
         },
         "b"
@@ -350,21 +446,54 @@ $(document).ready(function () {
         markers: false,
       },
     });
-    company.to(".sc-company .card-list", {
+
+
+    gsap.set('.sc-company .card-item:nth-child(1)',{xPercent:32,yPercent:10,rotate:20})
+    gsap.set('.sc-company .card-item:nth-child(2)',{xPercent:-45,yPercent:11,rotate:-20})
+    gsap.set('.sc-company .card-item:nth-child(3)',{xPercent:-34,yPercent:-12,rotate:11})
+    gsap.set('.sc-company .card-item:nth-child(4)',{xPercent:46,yPercent:-16,rotate:-18})
+    gsap.set('.sc-company .card-item:nth-child(5)',{xPercent:47,yPercent:15,rotate:-20})
+    gsap.set('.sc-company .card-item:nth-child(6)',{xPercent:44,yPercent:13,rotate:12})
+    company
+    .to(".sc-company .card-list", {
       xPercent: -100,
       x: function () {
         return window.outerWidth;
       },
-    });
+    },'a')
+    .to('.sc-company .card-item:nth-child(1)',{xPercent:-32,yPercent:-10,rotate:-20,},'a')
+    .to('.sc-company .card-item:nth-child(2)',{xPercent:45,yPercent:-11,rotate:20},'a')
+    .to('.sc-company .card-item:nth-child(3)',{xPercent:34,yPercent:12,rotate:-11},'a')
+    .to('.sc-company .card-item:nth-child(4)',{xPercent:-46,yPercent:16,rotate:18},'a')
+    .to('.sc-company .card-item:nth-child(5)',{xPercent:-47,yPercent:-15,rotate:20},'a')
+    .to('.sc-company .card-item:nth-child(6)',{xPercent:-44,yPercent:-13,rotate:-12},'a')
   });
-
-  const footer = gsap.timeline({
+  const faq = gsap.timeline({
     scrollTrigger: {
-      trigger: ".footer",
-      start: "top 30%",
+      trigger: ".sc-fait",
+      start: "top 10%",
       end: "bottom bottom",
       scrub: 0,
       markers: false,
+    },
+  });
+
+  faq
+  .to('.sc-fait .tab-item',{autoAlpha:1,y:0.125,stagger:0.1})
+  .to('.sc-fait .tab-item button',{y:0,x:0,rotate:0},'<')
+  const footer = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".footer",
+      start: "top 10%",
+      end: "bottom bottom",
+      scrub: 0,
+      markers: false,
+      onEnter: function () {
+        $(".header .nav").addClass("convert");
+      },
+      onLeaveBack: function () {
+        $(".header .nav").removeClass("convert");
+      },
     },
   });
   footer.to(".footer h3 span", { "--y": 0 });
@@ -378,18 +507,10 @@ $(document).ready(function () {
   });
 }); // document ready
 
-let headerOriginalTxt = new SplitType(".header .sub-item .original", {
-  type: "chars",
-});
-let headerDummyTxt = new SplitType(".header .sub-item .dummy", {
-  type: "chars",
-});
-let introRightTxt = new SplitType(".sc-intro .group-right p", {
-  type: "chars",
-});
-let introChangeTxt = new SplitType(".sc-intro .group-change .ok", {
-  type: "line",
-});
+let headerOriginalTxt = new SplitType(".header .sub-item .original", {type: "chars",});
+let headerDummyTxt = new SplitType(".header .sub-item .dummy", {type: "chars",});
+let introRightTxt = new SplitType(".sc-intro .group-right p", {type: "chars",});
+let introChangeTxt = new SplitType(".sc-intro .group-change .ok", {type: "line",});
 
 $(".sc-intro .group-right .line").each(function () {
   $(this).css({
@@ -398,6 +519,6 @@ $(".sc-intro .group-right .line").each(function () {
   });
 });
 $(".btn-top").click(function (e) {
-  $("html, body").animate({ scrollTop: 0 }, 400);
+$("html, body").animate({ scrollTop: 0 }, 400);
   return false; // 클릭 시 기본 동작 방지
 });
