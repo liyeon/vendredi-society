@@ -1,39 +1,28 @@
 // header
-
 .header {
   width: 100%;
-  &.convert {
-    .nav{
-      .logo {
-        .mini {
-          filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
-        }
-      }
-  
-      .btn-menu {
-        color: $color-primary;
-      }
-    }
-  }
 
   &.active {
     .nav {
-      .logo {
-        &.active {
+      &.convert {
+        .logo .mini {
+          filter: none;
+        }
+      }
+
+      &.active {
+        .logo {
           .original {
             transform: translateY(-300%);
           }
+
+          .mini {
+            opacity: 1;
+            visibility: visible;
+            filter: none;
+          }
         }
 
-        .original {
-          transform: translateY(-300%);
-        }
-
-        .mini {
-          opacity: 1!important;
-          visibility: visible!important;
-          filter: none;
-        }
       }
 
       .btn-menu {
@@ -46,20 +35,6 @@
           opacity: 1;
           visibility: visible;
           color: $color-white;
-        }
-      }
-    }
-
-    .group-sub {
-      --height: 100vh;
-      .sub-list {
-        .sub-item {
-          transform: translateY(0);
-          @for $i from 1 through 6 {
-            &:nth-child(#{$i}) {
-              transition-delay: 0.2s * $i;
-            }
-          }
         }
       }
     }
@@ -76,26 +51,45 @@
     padding-inline: clamp(20px, 2vw, 50px);
     z-index: 15;
 
+    &.active {
+      .logo {
+        .original {
+          transform: translateY(0);
+        }
+
+        .mini {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+    }
+
+    &.convert {
+      .logo {
+        .mini {
+          filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
+        }
+      }
+
+      .btn-menu {
+        color: $color-primary;
+      }
+    }
+
     .logo {
       a {
         display: block;
         position: relative;
       }
-      &.active {
-        .original {
-          transform: translateY(0);
-        }
-        .mini{
-          opacity: 0;
-          visibility: hidden;
-        }
-      }
+
       .original {
         min-width: 140px;
         width: 15vw;
         transform: translateY(-300%);
         transition: transform .5s ease;
       }
+
       .mini {
         width: 60px;
         height: 35px;
@@ -147,6 +141,22 @@
     z-index: 14;
     transition: height 1s ease;
     overflow: hidden;
+
+    &.active {
+      --height: 100vh;
+
+      .sub-list {
+        .sub-item {
+          transform: translateY(0);
+
+          @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+              transition-delay: 0.2s * $i;
+            }
+          }
+        }
+      }
+    }
 
     .inner {
       width: 100%;

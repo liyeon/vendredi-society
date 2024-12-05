@@ -65,10 +65,12 @@ $(document).ready(function () {
 
   $(".btn-menu .open").click(function (e) {
     $(".header").addClass("active");
+    $(".header .group-sub").addClass("active");
     $("body").addClass("hidden");
   });
-
+  
   $(".btn-menu .close").click(function (e) {
+    $(".header .group-sub").removeClass("active");
     $(".header").removeClass("active");
     $("body").removeClass("hidden");
   });
@@ -111,10 +113,10 @@ $(document).ready(function () {
     end: "bottom bottom",
     // markers:true,
     onEnter: function () {
-      $(".header .logo").removeClass("active");
+      $(".header .nav").removeClass("active");
     },
     onLeaveBack: function () {
-      $(".header .logo").addClass("active");
+      $(".header .nav").addClass("active");
     },
   });
 
@@ -131,7 +133,7 @@ $(document).ready(function () {
       },
     });
 
-    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:400});
+    gsap.set('.sc-intro .group-intro .media-wrap .box',{yPercent:500});
     gsap.set('.sc-intro .group-intro .media-wrap .box2',{rotate:20});
     gsap.set('.sc-intro .group-intro .media-wrap .box3',{rotate:-20});
     introBottom
@@ -139,7 +141,7 @@ $(document).ready(function () {
       .to(".sc-intro .group-intro .bottom-area",1, { "--width": 0 }, "a+=0.4")
       .to('.sc-intro .group-intro .media-wrap .box1',1.2,{
         xPercent:30,
-        yPercent:-300,
+        yPercent:-400,
         rotate:30},'a+=0.2')
       .to('.sc-intro .group-intro .media-wrap .box2',1.2,{
         xPercent:20,

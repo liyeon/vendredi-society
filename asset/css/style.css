@@ -258,24 +258,17 @@ body.hidden {
 .header {
   width: 100%;
 }
-.header.convert .nav .logo .mini {
-  -webkit-filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
-          filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
+.header.active .nav.convert .logo .mini {
+  -webkit-filter: none;
+          filter: none;
 }
-.header.convert .nav .btn-menu {
-  color: #003d31;
-}
-.header.active .nav .logo.active .original {
+.header.active .nav.active .logo .original {
   -webkit-transform: translateY(-300%);
           transform: translateY(-300%);
 }
-.header.active .nav .logo .original {
-  -webkit-transform: translateY(-300%);
-          transform: translateY(-300%);
-}
-.header.active .nav .logo .mini {
-  opacity: 1 !important;
-  visibility: visible !important;
+.header.active .nav.active .logo .mini {
+  opacity: 1;
+  visibility: visible;
   -webkit-filter: none;
           filter: none;
 }
@@ -287,37 +280,6 @@ body.hidden {
   opacity: 1;
   visibility: visible;
   color: #f7f7f7;
-}
-.header.active .group-sub {
-  --height: 100vh;
-}
-.header.active .group-sub .sub-list .sub-item {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(1) {
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(2) {
-  -webkit-transition-delay: 0.4s;
-          transition-delay: 0.4s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(3) {
-  -webkit-transition-delay: 0.6s;
-          transition-delay: 0.6s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(4) {
-  -webkit-transition-delay: 0.8s;
-          transition-delay: 0.8s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(5) {
-  -webkit-transition-delay: 1s;
-          transition-delay: 1s;
-}
-.header.active .group-sub .sub-list .sub-item:nth-child(6) {
-  -webkit-transition-delay: 1.2s;
-          transition-delay: 1.2s;
 }
 .header .nav {
   display: -webkit-box;
@@ -335,17 +297,24 @@ body.hidden {
   padding-inline: clamp(20px, 2vw, 50px);
   z-index: 15;
 }
-.header .nav .logo a {
-  display: block;
-  position: relative;
-}
-.header .nav .logo.active .original {
+.header .nav.active .logo .original {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.header .nav .logo.active .mini {
+.header .nav.active .logo .mini {
   opacity: 0;
   visibility: hidden;
+}
+.header .nav.convert .logo .mini {
+  -webkit-filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
+          filter: brightness(0) saturate(100%) invert(12%) sepia(11%) saturate(3865%) hue-rotate(122deg) brightness(98%) contrast(100%);
+}
+.header .nav.convert .btn-menu {
+  color: #003d31;
+}
+.header .nav .logo a {
+  display: block;
+  position: relative;
 }
 .header .nav .logo .original {
   min-width: 140px;
@@ -405,6 +374,37 @@ body.hidden {
   -webkit-transition: height 1s ease;
   transition: height 1s ease;
   overflow: hidden;
+}
+.header .group-sub.active {
+  --height: 100vh;
+}
+.header .group-sub.active .sub-list .sub-item {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.header .group-sub.active .sub-list .sub-item:nth-child(1) {
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+}
+.header .group-sub.active .sub-list .sub-item:nth-child(2) {
+  -webkit-transition-delay: 0.4s;
+          transition-delay: 0.4s;
+}
+.header .group-sub.active .sub-list .sub-item:nth-child(3) {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+.header .group-sub.active .sub-list .sub-item:nth-child(4) {
+  -webkit-transition-delay: 0.8s;
+          transition-delay: 0.8s;
+}
+.header .group-sub.active .sub-list .sub-item:nth-child(5) {
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+.header .group-sub.active .sub-list .sub-item:nth-child(6) {
+  -webkit-transition-delay: 1.2s;
+          transition-delay: 1.2s;
 }
 .header .group-sub .inner {
   width: 100%;
