@@ -141,7 +141,7 @@
     z-index: 14;
     transition: height 1s ease;
     overflow: hidden;
-    overscroll-behavior: none;
+    will-change: transform;
     &.active {
       --height: 100vh;
 
@@ -269,7 +269,7 @@
         transform: translateY(30px);
         height: clamp(75px, 6.9444444444vw, 133.3333333333px);
         overflow: hidden;
-        overscroll-behavior: none;
+        will-change: transform;
         @include res {
           height: 58px;
         }
@@ -292,6 +292,7 @@
           &:hover {
             .char {
               animation: move .3s ease forwards;
+
               @for $i from 7 through 1 {
                 &:nth-of-type(#{$i}) {
                   animation-delay: 0.05s * (8 - $i);

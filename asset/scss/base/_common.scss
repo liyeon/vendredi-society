@@ -11,11 +11,12 @@
 body {
   transition: opacity .6s cubic-bezier(0.165, 0.84, 0.44, 1);
   overflow-x: hidden;
+  will-change: transform;
+  
 }
 
 body.hidden {
   overflow: hidden;
-  overscroll-behavior: none;
 }
 
 .sticky {
@@ -23,7 +24,7 @@ body.hidden {
   top: 0;
   height: 100vh;
   overflow: hidden;
-  overscroll-behavior: none;
+  will-change: transform;
 }
 
 // 커서
