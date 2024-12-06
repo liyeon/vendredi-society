@@ -496,6 +496,10 @@
     &.fixed{
       position: fixed;
       height: 1430px;
+      @include res{
+        position: static;
+        height: auto;
+      }
     }
     @include res{
       position: static;
