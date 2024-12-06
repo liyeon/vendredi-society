@@ -1355,6 +1355,12 @@ body.hidden {
   top: 25%;
   white-space: nowrap;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 @media (max-width: 767px) {
   .sc-project button .txt-wrap {
@@ -1387,13 +1393,37 @@ body.hidden {
     z-index: 3;
   }
 }
+.sc-project .hori-wrap {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.sc-project .hori-wrap.fixed {
+  position: fixed;
+  height: 1430px;
+}
+@media (max-width: 767px) {
+  .sc-project .hori-wrap {
+    position: static;
+    height: auto;
+  }
+}
+.sc-project .hori-box {
+  position: relative;
+}
+@media (max-width: 767px) {
+  .sc-project .hori-box {
+    position: static;
+  }
+}
 .sc-project .hori {
   pointer-events: none;
   width: 34%;
   height: auto;
   position: absolute;
   top: 0;
-  opacity: 0.1;
+  opacity: 0.2;
 }
 .sc-project .hori1 {
   left: 20px;
@@ -2107,14 +2137,6 @@ body.hidden {
     width: 100%;
   }
 }
-.sc-fait .tab-area .tab-item {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-perspective: 900px;
-          perspective: 900px;
-  -webkit-transform: translate(0px, -146.875px);
-          transform: translate(0px, -146.875px);
-}
 .sc-fait .tab-area .tab-item:hover button, .sc-fait .tab-area .tab-item.active button {
   background: #f0ff3d;
   color: #001713;
@@ -2133,7 +2155,6 @@ body.hidden {
   font-weight: 400;
   -webkit-transition: background 0.3s, color 0.3s;
   transition: background 0.3s, color 0.3s;
-  rotate: 0 70deg;
   -webkit-transform-origin: 0 90%;
           transform-origin: 0 90%;
 }

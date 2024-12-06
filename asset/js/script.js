@@ -148,46 +148,40 @@ $(document).ready(function () {
       },
     });
   });
-    
-  const project = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".sc-project",
-      start: "top top",
-      end: "bottom",
-      scrub: 0,
-      onEnter: function () {
-        $(".header .nav").removeClass("convert");
-      },
-      onLeaveBack: function () {
-        $(".header .nav").addClass("convert");
-      },
-    },
-  });
 
+  const sections = [
+    { trigger: ".sc-project", toggleClass: "remove" },
+    { trigger: ".sc-rule", toggleClass: "add" },
+    { trigger: ".sc-part", toggleClass: "remove" },
+    { trigger: ".group-desole", toggleClass: "add" },
+    { trigger: ".sc-free", toggleClass: "remove" },
+    { trigger: ".sc-type", toggleClass: "add" },
+    { trigger: ".sc-company", toggleClass: "remove" },
+  ];
+  
+  sections.forEach((section) => {
     ScrollTrigger.create({
-      trigger: ".sc-type",
+      trigger: section.trigger,
       start: "top top",
       end: "bottom bottom",
       markers: false,
       onEnter: function () {
-        $(".header .nav").addClass("convert");
+        if (section.toggleClass === "add") {
+          $(".header .nav").addClass("convert");
+        } else {
+          $(".header .nav").removeClass("convert");
+        }
       },
       onLeaveBack: function () {
-        $(".header .nav").removeClass("convert");
+        if (section.toggleClass === "add") {
+          $(".header .nav").removeClass("convert");
+        } else {
+          $(".header .nav").addClass("convert");
+        }
       },
     });
-    ScrollTrigger.create({
-      trigger: ".sc-company",
-      start: "top top",
-      end: "bottom bottom",
-      markers: false,
-      onEnter: function () {
-        $(".header .nav").removeClass("convert");
-      },
-      onLeaveBack: function () {
-        $(".header .nav").addClass("convert");
-      },
-    });
+  });
+  
   mm.add(`(min-width: 767px)`, () => {
     const introBottom = gsap.timeline({
       scrollTrigger: {
@@ -340,6 +334,79 @@ $(document).ready(function () {
       duration: 0.1,
       ease: "power2.out",
     });
+
+
+
+    const btnWilbi = $(".sc-project .btn-wilbi .txt-wrap span");
+
+    btnWilbi.each(function (index, span) {
+      gsap.set(span, {
+        yPercent: (index + 1) * 20,
+        rotate: (index + 1) * 10,
+      });
+    });
+    
+    const btnOtio = $(".sc-project .btn-otio .txt-wrap span");
+    
+    btnOtio.each(function (index, span) {
+      gsap.set(span, {
+        yPercent: 80 - index * 20,
+        rotate: -40 + index * 10,
+      });
+    });
+
+    const project = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-project",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0,
+      },
+    });
+
+    $(".sc-project .btn-wilbi .txt-wrap span").each(function (index, span) {
+      project.to(span, {
+        yPercent: -(index + 1) * 20,
+        rotate: -(index + 1) * 10,
+      }, 'a');
+    });
+    
+    $(".sc-project .btn-otio .txt-wrap span").each(function (index, span) {
+      project.to(span, {
+        yPercent: -(80 - index * 20),
+        rotate: 40 - index * 10,
+      }, 'b');
+    });
+    gsap.set('.sc-project .hori2',{xPercent:-50})
+    
+    const project2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".sc-project",
+        start: "top center",
+        end: "bottom bottom",
+        scrub: 0,
+        markers:true,
+        onEnter:function(){
+          $('.sc-project .hori-wrap').addClass('fixed');
+        },
+        onEnterBack:function(){
+          $('.sc-project .hori-wrap').addClass('fixed');
+        },
+        onLeave:function(){
+          $('.sc-project .hori-wrap').removeClass('fixed');
+        },
+        onLeaveBack: () => {
+          $('.sc-project .hori-wrap').removeClass('fixed');
+        },
+      },
+    });
+
+    project2
+    .to('.sc-project .hori1',{xPercent:-10,yPercent:-110,rotate:-30},'a')
+    .to('.sc-project .hori2',{xPercent:20,yPercent:-120,rotate:50},'a')
+    .to('.sc-project .hori3',{xPercent:10,yPercent:-180,rotate:40},'a')
+    .to('.sc-project .hori-wrap',{yPercent:100},'a')
+    
     ScrollTrigger.create({
       trigger: ".sc-part",
       start: "top center",
@@ -468,6 +535,10 @@ $(document).ready(function () {
     .to('.sc-company .card-item:nth-child(5)',{xPercent:-47,yPercent:-15,rotate:20},'a')
     .to('.sc-company .card-item:nth-child(6)',{xPercent:-44,yPercent:-13,rotate:-12},'a')
   });
+
+  gsap.set('.sc-fait .tab-item',{autoAlpha:0,'perspective':'900px',y:-146.875,})
+  gsap.set('.sc-fait .tab-item button',{rotateX:70})
+  
   const faq = gsap.timeline({
     scrollTrigger: {
       trigger: ".sc-fait",
@@ -479,8 +550,8 @@ $(document).ready(function () {
   });
 
   faq
-  .to('.sc-fait .tab-item',{autoAlpha:1,y:0.125,stagger:0.1})
-  .to('.sc-fait .tab-item button',{y:0,x:0,rotate:0},'<')
+  .to('.sc-fait .tab-item',{autoAlpha:1,y:0,stagger:0.1,})
+  .to('.sc-fait .tab-item button',{rotateX:0,stagger: 0.1},'<')
   const footer = gsap.timeline({
     scrollTrigger: {
       trigger: ".footer",

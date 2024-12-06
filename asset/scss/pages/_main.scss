@@ -459,6 +459,8 @@
       top: 25%;
       white-space: nowrap;
       width: 100%;
+      display: flex;
+      justify-content: center;
       @include res{
         top: auto;
         bottom: 10vw;
@@ -486,14 +488,34 @@
       }
     }
   }
-
+  .hori-wrap{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    &.fixed{
+      position: fixed;
+      height: 1430px;
+    }
+    @include res{
+      position: static;
+      height: auto;
+    }
+  }
+  
+  .hori-box{
+    position: relative;
+    @include res{
+      position: static;
+    }
+  }
   .hori{
     pointer-events: none;
     width: 34%;
     height: auto;
     position: absolute;
     top: 0;
-    opacity: .1;
+    opacity: .2;
     &1{
       left: 20px;
     }
@@ -1026,10 +1048,6 @@
       }
     }
     .tab-item{
-      opacity: 0;
-      visibility: hidden;
-			perspective: 900px;
-      transform: translate(0px, -146.875px);
       &:hover,&.active{
         button{
           background:$color-bright;
@@ -1049,7 +1067,6 @@
         line-height: 1.5;
         font-weight: 400;
         transition: background .3s, color .3s;
-        rotate:0 70deg;
 				transform-origin: 0 90%;
         @include res{
           font-size: 14px;
