@@ -75,6 +75,7 @@ $(document).ready(function () {
   });
 
   $(".sub-item a").click(function (e) {
+    $(".header .group-sub").removeClass("active");
     $(".header").removeClass("active");
     $("body").removeClass("hidden");
   });
