@@ -431,7 +431,7 @@ body.hidden {
 @media (max-width: 767px) {
   .header .group-sub .inner {
     overflow-y: auto;
-    padding: 108px 0 0;
+    padding: 161px 0 0;
   }
 }
 .header .group-sub .sub-area {
