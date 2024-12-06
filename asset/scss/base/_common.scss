@@ -15,6 +15,7 @@ body {
 
 body.hidden {
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 .sticky {
@@ -22,6 +23,7 @@ body.hidden {
   top: 0;
   height: 100vh;
   overflow: hidden;
+  overscroll-behavior: none;
 }
 
 // 커서
