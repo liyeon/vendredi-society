@@ -385,7 +385,7 @@ $(document).ready(function () {
         start: "top center",
         end: "bottom bottom",
         scrub: 0,
-        markers:true,
+        markers:false,
         onEnter:function(){
           $('.sc-project .hori-wrap').addClass('fixed');
         },
