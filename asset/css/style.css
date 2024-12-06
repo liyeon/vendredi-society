@@ -165,6 +165,7 @@ body {
   -webkit-transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   overflow-x: hidden;
+  will-change: transform;
 }
 
 body.hidden {
@@ -176,6 +177,7 @@ body.hidden {
   top: 0;
   height: 100vh;
   overflow: hidden;
+  will-change: transform;
 }
 
 .cursor {
@@ -374,6 +376,7 @@ body.hidden {
   -webkit-transition: height 1s ease;
   transition: height 1s ease;
   overflow: hidden;
+  will-change: transform;
 }
 .header .group-sub.active {
   --height: 100vh;
@@ -554,6 +557,7 @@ body.hidden {
           transform: translateY(30px);
   height: clamp(75px, 6.9444444444vw, 133.3333333333px);
   overflow: hidden;
+  will-change: transform;
 }
 @media (max-width: 767px) {
   .header .group-sub .sub-list .sub-item {
@@ -585,6 +589,10 @@ body.hidden {
     -webkit-transform: translateY(-4px);
             transform: translateY(-4px);
   }
+}
+.header .group-sub .sub-list .sub-item a:hover .dummy {
+  opacity: 1;
+  visibility: visible;
 }
 .header .group-sub .sub-list .sub-item a:hover .char {
   -webkit-animation: move 0.3s ease forwards;
@@ -630,6 +638,8 @@ body.hidden {
   color: #f0ff3d;
   font-family: "Orbikular", serif;
   font-style: italic;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .footer {

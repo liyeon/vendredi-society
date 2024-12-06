@@ -290,9 +290,12 @@
           }
 
           &:hover {
+            .dummy{
+              opacity: 1;
+              visibility: visible;
+            }
             .char {
               animation: move .3s ease forwards;
-
               @for $i from 7 through 1 {
                 &:nth-of-type(#{$i}) {
                   animation-delay: 0.05s * (8 - $i);
@@ -313,6 +316,8 @@
             color: $color-bright;
             font-family: 'Orbikular', serif;
             font-style: italic;
+            opacity: 0;
+            visibility: hidden;
           }
         }
       }
