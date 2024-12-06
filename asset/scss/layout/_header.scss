@@ -269,7 +269,6 @@
         transform: translateY(30px);
         height: clamp(75px, 6.9444444444vw, 133.3333333333px);
         overflow: hidden;
-        will-change: transform;
         @include res {
           height: 58px;
         }

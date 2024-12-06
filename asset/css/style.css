@@ -176,7 +176,6 @@ body.hidden {
   top: 0;
   height: 100vh;
   overflow: hidden;
-  will-change: transform;
 }
 
 .cursor {
@@ -556,7 +555,6 @@ body.hidden {
           transform: translateY(30px);
   height: clamp(75px, 6.9444444444vw, 133.3333333333px);
   overflow: hidden;
-  will-change: transform;
 }
 @media (max-width: 767px) {
   .header .group-sub .sub-list .sub-item {
